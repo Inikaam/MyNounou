@@ -1,0 +1,69 @@
+/* Empty. Add your own CSS if you like */
+
+/* Header bar */
+[nav-bar-transition="android"] [nav-bar="active"] .bar, [nav-bar-transition="android"] [nav-bar="entering"] .bar, 
+[nav-bar-transition="ios"] [nav-bar="active"] .bar, [nav-bar-transition="ios"] [nav-bar="entering"] .bar {
+	background: #FE9777;
+}
+
+.bar.bar-stable .title {
+	color: #fff;
+}
+
+/* App Background */
+.header-accueil {
+	background: #F3FAFD;
+}
+
+
+/* Nav Bar */
+
+/* Icon color when active */
+ion-tabs.tabs-color-active-positive .tab-item.tab-item-active, 
+ion-tabs.tabs-color-active-positive .tab-item.active, 
+ion-tabs.tabs-color-active-positive .tab-item.activated {
+    color: #FE9777; 
+}
+
+/* logo */
+.logo img {
+	display: block;
+	width: 120px;
+	height: 120px;
+	margin: 0px auto;
+}
+
+.icones img {
+	display: block;
+	width: 70%;
+	height: 70%;
+	margin: 30px auto;
+}
+
+.je_cherche, .localisation {
+	margin: 20px 0px;
+	font-weight: bold;
+	color: #72BFD3;
+}
+
+/* BTN */
+.size {
+	width: 100%;
+}
+
+.button.button-positive.button-outline {
+	border-color: #FE9777;
+	color: #FE9777; 
+}
+
+.button.button-positive.button-outline.active, 
+.button.button-positive.button-outline.activated {
+	background-color: #FE9777;
+	color: #fff;
+}
+
+/* Input */
+#adresse {
+	width: 100%;
+	padding: 0 10px;
+}
