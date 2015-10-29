@@ -1,0 +1,48 @@
+<ion-view view-title="{{ result.firstname }}">
+  <ion-content>
+    <h3>Présentation</h3>
+
+    <div class="card result">
+      <div class="clearfix">
+        <div class="infos">
+          <img src="img/logo.png">
+          <span>{{ result.firstname }}</span>
+        </div>
+        <div class="price">
+          {{result.price}}€/h
+        </div>
+      </div>
+
+      <div class="description clearfix">
+        <div class="rating">
+          4/10 <i class="icon ion-android-star"></i>
+          <i class="icon ion-android-star"></i>
+          <i class="icon ion-android-star"></i>
+          <i class="icon ion-android-star"></i>
+          <i class="icon ion-android-star off"></i>
+        </div>
+        <div class="stats">
+          <span><img src="img/icon-baby.svg"> 6</span>
+          <span><img src="img/icon-comments.svg"> 5</span>
+        </div>
+        <p>Je m’appelle Charlotte et je suis étudiante en communication. J’ai un très bon contact avec les enfants qui m’apprécient aussi.</p>
+      </div>
+    </div>
+
+    <h3>Disponibilités</h3>
+    <div class="card result">
+      <div class="day clearfix">
+        <span class="name">Lundi</span>
+        <span class="time">11h30 - 15h  |  19h-00H</span>
+      </div>
+      <div class="day clearfix">
+        <span class="name">Mardi</span>
+        <span class="time">15H-00H</span>
+      </div>
+    </div>
+
+    <button class="button contact col col-100"><img src="img/icon-sun.svg"><span>Entrer en contact</span></button>
+    
+   
+  </ion-content>
+</ion-view>

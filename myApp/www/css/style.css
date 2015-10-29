@@ -1,4 +1,13 @@
 /* Empty. Add your own CSS if you like */
+.clearfix:before,
+.clearfix:after {
+    content: " "; /* 1 */
+    display: table; /* 2 */
+}
+
+.clearfix:after {
+    clear: both;
+}
 
 /* Header bar */
 [nav-bar-transition="android"] [nav-bar="active"] .bar, [nav-bar-transition="android"] [nav-bar="entering"] .bar, 
@@ -15,6 +24,8 @@
 	background: #F3FAFD;
 }
 
+.pane {background: #F3FAFD;}
+.pane h3 {padding: 0 10px; margin:30px 0 0; text-transform: uppercase; color:#6DB1D0; font-size:15px;}
 
 /* Nav Bar */
 
@@ -24,6 +35,29 @@ ion-tabs.tabs-color-active-positive .tab-item.active,
 ion-tabs.tabs-color-active-positive .tab-item.activated {
     color: #FE9777; 
 }
+
+.card.result {margin-top:5px;box-shadow: none; background:#fff; border-radius:10px; padding:10px; }
+.card.result .infos {float:left; color:#878787;}
+.card.result .infos img {height:40px; width:40px; border-radius:50%; float:left;}
+.card.result .infos span {margin:18px; position:relative; top:10px; font-size:20px;}
+.card.result .price {position:relative; top:10px; float:right; background:#6DB1D0; padding:2px 10px; border-radius:20px; color:#fff;}
+.card.result .description { width:100%;margin-top:15px; float:left;}
+.card.result .description .rating {display:inline-block; font-size:20px; font-weight:bold; color:#CECDCE;}
+.card.result .description .rating i.off {color:#CECDCE;}
+.card.result .description .rating i {color:#6DB1D0;}
+.card.result .description .stats {float:right;}
+.card.result .description .stats span {float:left; margin-left:8px; color:#6DB1D0; font-weight: bold; line-height: 1.7;}
+.card.result .description .stats span img {float:left; height:24px; margin-right:5px;}
+.card.result .description > p {margin:20px 0; color:#898989; font-size:15px;}
+
+.card.result .day {display:block;}
+.card.result .day .time {float:right; text-transform: uppercase; color:#6DB1D0;}
+.card.result .day .name {float:left; text-transform: uppercase; color:#898989;}
+
+.button.contact {line-height:17px; font-size:17px; text-transform:uppercase; border-radius:10px; width:95%; margin:0 auto;background-color: #FE9777; color: #fff; border-color: #FE9777;}
+.button.contact img {    margin-top: 7px;margin-right:10px;height:25px;}
+.button.contact span {position: relative;top: -6px;}
+
 
 .btn_recherche button {
 	    position: relative;
@@ -49,7 +83,7 @@ ion-tabs.tabs-color-active-positive .tab-item.activated {
 }
 
 .btn_recherche button.on {
-	    position: relative;
+	position: relative;
     display: inline-block;
     margin: 0;
     padding: 0 12px;

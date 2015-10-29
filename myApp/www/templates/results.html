@@ -1,11 +1,11 @@
-<ion-view view-title="{{vicinity}}">
+<ion-view view-title="{{need}} | {{vicinity}}">
   <ion-content>
-   Recherche d'un(e) {{need}} à lat = {{lat}} et lng = {{lng}}
+   <!-- Recherche d'un(e) {{need}} à lat = {{lat}} et lng = {{lng}} -->
     <ion-list>
-      <ion-item class="item-remove-animate item-avatar item-icon-right" ng-repeat="result in results" type="item-text-wrap" href="#/tab/results/{{result.id}}">
-        <img ng-src="{{result.face}}">
-        <h2>{{result.name}}</h2>
-        <p>{{result.descr}}</p>
+      <ion-item class="item-remove-animate item-avatar item-icon-right" ng-repeat="result in results.data" type="item-text-wrap" ui-sref="tab.result({id : result._id})" >
+        <img src="http://www.stockvault.net/blog/wp-content/uploads/2013/11/Portrait-8.jpg">
+        <h2>{{result.firstname}} {{result.lastname}}</h2>
+        <p>{{result.price}}€/heure</p>
         <i class="icon ion-chevron-right icon-accessory"></i>
 
         
