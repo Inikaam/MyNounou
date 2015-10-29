@@ -4092,8 +4092,8 @@ ion-tabs.tabs-color-active-dark .tab-item {
     -o-transition: color 0.1s ease;
     transition: color 0.1s ease; }
     .tabs-top.tabs-striped .tab-item.tab-item-active, .tabs-top.tabs-striped .tab-item.active, .tabs-top.tabs-striped .tab-item.activated {
-      margin-top: 0px;
-      border-width: 1px 0px 0px 0px !important;
+      margin-top: 1px;
+      border-width: 0px 0px 2px 0px !important;
       border-style: solid; }
       .tabs-top.tabs-striped .tab-item.tab-item-active > .badge, .tabs-top.tabs-striped .tab-item.tab-item-active > i, .tabs-top.tabs-striped .tab-item.active > .badge, .tabs-top.tabs-striped .tab-item.active > i, .tabs-top.tabs-striped .tab-item.activated > .badge, .tabs-top.tabs-striped .tab-item.activated > i {
         margin-top: -1px; }
@@ -4114,7 +4114,7 @@ ion-tabs.tabs-color-active-dark .tab-item {
 /* Allow parent element to have tabs-top */
 /* If you change this, change platform.scss as well */
 .tabs-top > .tabs, .tabs.tabs-top {
-  bottom: 0px;
+  top: 44px;
   padding-top: 0;
   background-position: bottom;
   border-top-width: 0;

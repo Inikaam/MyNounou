@@ -1,0 +1,15 @@
+<ion-view view-title="{{vicinity}}">
+  <ion-content>
+   Recherche d'un(e) {{need}} à lat = {{lat}} et lng = {{lng}}
+    <ion-list>
+      <ion-item class="item-remove-animate item-avatar item-icon-right" ng-repeat="result in results" type="item-text-wrap" href="#/tab/results/{{result.id}}">
+        <img ng-src="{{result.face}}">
+        <h2>{{result.name}}</h2>
+        <p>{{result.descr}}</p>
+        <i class="icon ion-chevron-right icon-accessory"></i>
+
+        
+      </ion-item>
+    </ion-list>
+  </ion-content>
+</ion-view>

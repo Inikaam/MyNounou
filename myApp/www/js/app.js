@@ -5,7 +5,7 @@
 // the 2nd parameter is an array of 'requires'
 // 'starter.services' is found in services.js
 // 'starter.controllers' is found in controllers.js
-angular.module('starter', ['ionic', 'starter.controllers', 'starter.services'])
+angular.module('starter', ['ionic', 'starter.controllers', 'starter.services','google.places'])
 
 .run(function($ionicPlatform) {
   $ionicPlatform.ready(function() {
@@ -38,6 +38,16 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services'])
     templateUrl: 'templates/tabs.html'
   })
 
+  // .state('results', {
+  //   url: '/results/:params',
+  //   views: {
+  //     'tab-dash': {
+  //       templateUrl: 'templates/results.html',
+  //       controller: 'DashCtrl'
+  //     }
+  //   }
+  // })
+
   // Each tab has its own nav history stack:
 
   .state('tab.dash', {
@@ -46,6 +56,22 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services'])
       'tab-dash': {
         templateUrl: 'templates/tab-dash.html',
         controller: 'DashCtrl'
+      }
+    }
+  })
+
+   .state('tab.results', {
+    url: '/results',
+    params: {
+      vicinity: {},
+      lat: {},
+      lng: {},
+      need: {}
+    },
+    views: {
+      'tab-dash': {
+        templateUrl: 'templates/results.html',
+        controller: 'ResultsCtrl'
       }
     }
   })

@@ -25,6 +25,50 @@ ion-tabs.tabs-color-active-positive .tab-item.activated {
     color: #FE9777; 
 }
 
+.btn_recherche button {
+	    position: relative;
+    display: inline-block;
+    margin: 0;
+    padding: 0 12px;
+    min-width: 52px;
+    min-height: 47px;
+    border-width: 1px;
+    border-style: solid;
+    border-radius: 2px;
+    vertical-align: top;
+    text-align: center;
+    text-overflow: ellipsis;
+    font-size: 16px;
+    line-height: 42px;
+    cursor: pointer;
+    background-color: transparent;
+    color: #fff;
+    border-color: #FE9777;
+    color: #FE9777;
+    width: 100%;
+}
+
+.btn_recherche button.on {
+	    position: relative;
+    display: inline-block;
+    margin: 0;
+    padding: 0 12px;
+    min-width: 52px;
+    min-height: 47px;
+    border-width: 1px;
+    border-style: solid;
+    border-radius: 2px;
+    vertical-align: top;
+    text-align: center;
+    text-overflow: ellipsis;
+    font-size: 16px;
+    line-height: 42px;
+    cursor: pointer;
+    background-color: #FE9777;
+    color: #fff;
+}
+
+
 /* logo */
 .logo img {
 	display: block;
@@ -46,10 +90,6 @@ ion-tabs.tabs-color-active-positive .tab-item.activated {
 	color: #72BFD3;
 }
 
-/* BTN */
-.size {
-	width: 100%;
-}
 
 .button.button-positive.button-outline {
 	border-color: #FE9777;
