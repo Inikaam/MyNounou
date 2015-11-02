@@ -1,3 +1,5 @@
+// TODO : supprimer ce fichier
+
 angular.module('starter.services', [])
 
 .factory('Chats', function() {

@@ -1,4 +1,6 @@
-angular.module('starter.controllers', [])
+// TODO: supprimer ce fichier
+
+angular.module('starter.controllers')
 
 .controller('DashCtrl', function($scope,$state,$stateParams) {
 
