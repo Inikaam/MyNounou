@@ -1,0 +1,53 @@
+<ion-view view-title="Accueil" class="header-accueil">
+  <ion-content class="padding">
+    <div class="logo">
+      <img src="img/logo.png">
+    </div>
+
+    <form ng-controller="DashCtrl">
+
+    <div class="je_cherche">
+      <p>JE CHERCHE UN(E) : </p>
+    </div>
+
+    <div class="btn_recherche">
+      <div class="row">
+        <div class="col col-50">
+          <button  ng-click="need='nounou'" ng-class="need == 'nounou' ? 'on' : 'off'">NOUNOU</button>
+        </div>
+
+        <div class="col col-50">
+          <button ng-click="need='babysitter'" ng-class="need == 'babysitter' ? 'on' : 'off'">BABY-SITTER</button>
+        </div>
+      </div>
+    </div>
+
+    <div class="localisation">
+      <p>PRES DE : </p>
+
+        <input g-places-autocomplete force-selection="true" ng-model="address" type="text" placeholder="Entrez une adresse, ville, code postal ..." id="adresse">
+
+      <div class="icones">
+        <img src="img/icones.png">
+      </div>
+    </div>
+
+    </form>
+
+
+
+
+  </ion-content>
+</ion-view>
+
+<!-- <div class="btn_recherche">
+      <div class="row">
+        <div class="col col-50">
+          <button ng-click="type='nounou'" ng-class="type == 'nounou' ? 'on' : 'off'">NOUNOU</button>
+        </div>
+
+        <div class="col col-50">
+          <button ng-click="type='babysitter'" ng-class="type == 'babysitter' ? 'on' : 'off'">BABY-SITTER</button>
+        </div>
+      </div>
+    </div> -->
