@@ -6,9 +6,9 @@
 		.controller('AuthenticateCreateNannyCtrl', AuthenticateCreateNannyCtrl)
 		.controller('AuthenticateCreateParentCtrl', AuthenticateCreateParentCtrl);
 	
-	AuthenticateCtrl.$inject = ['$state', '$stateParams', '$cordovaToast', '$http', 'API_URL'];
+	AuthenticateCtrl.$inject = ['$state', '$stateParams', '$cordovaToast', '$http', '$ionicLoading', 'API_URL'];
 	
-	function AuthenticateCtrl($state, $routeParams, $cordovaToast, $http, API_URL) {
+	function AuthenticateCtrl($state, $routeParams, $cordovaToast, $http, $ionicLoading, API_URL) {
 		var auth = this;
 		
 		// Variables
@@ -134,7 +134,6 @@
 			var nanny = angular.copy(createNanny.accountData);
 			delete nanny.confirmPassword;
 			nanny.password = md5(nanny.password);
-			console.info(nanny);
 			$ionicLoading.show({template: 'Chargement...'});
 			$http({
 				url: API_URL + '/api/nannies',

@@ -58,12 +58,12 @@
 				})
 	
 				// Each tab has its own nav history stack:
-				.state('tab.dash', {
-					url : '/dash',
+				.state('tab.search-parents', {
+					url : '/search-parents',
 					views : {
 						'tab-dash' : {
-							templateUrl : 'templates/tab-dash.html',
-							controller : 'DashCtrl'
+							templateUrl : 'templates/parents/search.html',
+							controller : 'ParentsSearchCtrl as pSearch'
 						}
 					}
 				})
