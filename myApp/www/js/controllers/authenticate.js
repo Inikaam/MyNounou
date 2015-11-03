@@ -115,10 +115,11 @@
 				data: $.param(nanny)
 			})
 			.success(function(res) {
-				console.info(res);
 				if(! res.success) {
 					$cordovaToast.show(res.message, 'short', 'bottom');
 				} else {
+					sessionStorage.setItem('user_id', res.data._id);
+					sessionStorage.setItem('token', res.token);
 					$cordovaToast.show(res.message, 'short', 'bottom');
 					// TODO : rediriger vers la page d'accueil du compte nounou
 				}
