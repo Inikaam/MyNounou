@@ -5,9 +5,9 @@
 		.controller('AuthenticateCtrl', AuthenticateCtrl)
 		.controller('AuthenticateCreateNannyCtrl', AuthenticateCreateNannyCtrl);
 	
-	AuthenticateCtrl.$inject = ['$state', '$stateParams', '$cordovaToast'];
+	AuthenticateCtrl.$inject = ['$state', '$stateParams', '$cordovaToast', '$http'];
 	
-	function AuthenticateCtrl($state, $routeParams, $cordovaToast) {
+	function AuthenticateCtrl($state, $routeParams, $cordovaToast, $http) {
 		var auth = this;
 		
 		// Variables
@@ -60,11 +60,12 @@
 		    	dim: [],
 			}
 		};
-		createNanny.step = 1; // TODO : remettre à 1
+		createNanny.step = 1;
 		createNanny.typeDescription = {
 			nanny: "Vous êtes assistante maternelle et vous vous occupez d'un ou plusieurs enfants.",
 			babysitter: "Vous gardez des enfants pendant quelques heures pour permettre aux parents de sortir."
 		};
+		
 		// Methods
 		createNanny.changeStep = changeStep;
 		
@@ -87,23 +88,21 @@
 			delete nanny.confirmPassword;
 			nanny.password = md5(nanny.password);
 			$http({
-				url: API_URL + '/nannies',
+				url: 'http://localhost:8080/api/nannies',
 				method: 'POST',
-				data: nanny,
-				headers: {
-					"Access-Control-Allow-Origin": "*"
-				},
+				data: $.param(nanny)
 			})
 			.success(function(res) {
 				console.info(res);
 				if(! res.success) {
-					
+					$cordovaToast.show(res.message, 'short', 'bottom');
 				} else {
-					
+					$cordovaToast.show(res.message, 'short', 'bottom');
 				}
 			})
 			.error(function(err) {
 				throw err;
+				$cordovaToast.show('Erreur de connexion', 'short', 'bottom');
 			});
 		}
 		
