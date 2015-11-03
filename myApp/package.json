@@ -21,7 +21,8 @@
     "cordova-plugin-splashscreen",
     "cordova-plugin-statusbar",
     "ionic-plugin-keyboard",
-    "cordova-plugin-x-toast"
+    "cordova-plugin-x-toast",
+    "org.apache.cordova.camera"
   ],
   "cordovaPlatforms": [
     "ios",
