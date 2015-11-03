@@ -2,7 +2,7 @@
 
 (function() {
 
-	angular.module('myNounou', [ 'ionic', 'google.places' ])
+	angular.module('myNounou', [ 'ionic', 'google.places', 'ngCordova' ])
 
 	.run(function($ionicPlatform) {
 		$ionicPlatform
@@ -23,13 +23,21 @@
 				}
 			});
 		})
-		.constant('API', 'http://localhost:8080')
-		.config(function($stateProvider, $urlRouterProvider) {
+		.constant('API_URL', 'http://localhost:8080')
+		.config(function($stateProvider, $urlRouterProvider, $httpProvider) {
 			$stateProvider
 				.state('authenticate', {
 					url : '/authenticate',
+					cache: false,
 					templateUrl : 'templates/authenticate/authenticate.html',
 					controller : 'AuthenticateCtrl as auth'
+				})
+				
+				.state('create-nanny', {
+					url : '/authenticate/create-nanny',
+					cache: false,
+					templateUrl : 'templates/authenticate/create-nanny.html',
+					controller : 'AuthenticateCreateNannyCtrl as createNanny'
 				})
 	
 				// setup an abstract state for the tabs directive
