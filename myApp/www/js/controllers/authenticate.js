@@ -23,12 +23,14 @@
 			if(auth.loginForm.$valid) {
 				var loginData = angular.copy(auth.loginData);
 				loginData.password = md5(loginData.password);
+				$ionicLoading.show({template: 'Chargement...'});
 				$http({
 					method: 'POST',
 					url: API_URL + '/api/authenticate',
 					data: $.param(loginData)
 				})
 				.success(function(res){
+					$ionicLoading.hide();
 					if(! res.success) {
 						$cordovaToast.show(res.message, 'short', 'bottom');
 					} else {
@@ -42,7 +44,9 @@
 					}
 				})
 				.error(function(err){
+					$ionicLoading.hide();
 					console.error(err);
+					$cordovaToast.show('Une erreur est survenue.', 'short', 'bottom');
 				});
 			} else {
 				$cordovaToast.show('Les champs doivent être remplis correctement.', 'short', 'bottom');
@@ -51,9 +55,9 @@
 		
 	}
 	
-	AuthenticateCreateNannyCtrl.$inject = ['$state', '$stateParams', '$cordovaToast', '$http', 'API_URL'];
+	AuthenticateCreateNannyCtrl.$inject = ['$state', '$stateParams', '$cordovaToast', '$http', '$ionicLoading', 'API_URL'];
 	
-	function AuthenticateCreateNannyCtrl($state, $routeParams, $cordovaToast, $http, API_URL) {
+	function AuthenticateCreateNannyCtrl($state, $routeParams, $cordovaToast, $http, $ionicLoading, API_URL) {
 		var createNanny = this;
 		
 		// Variables
@@ -93,8 +97,28 @@
 		createNanny.changeStep = changeStep;
 		
 		function changeStep(form) {
-			if(form.$valid && createNanny.step < 5) {
+			if(form.$valid && createNanny.step < 4) {
 				createNanny.step++;
+			} else if(form.$valid && createNanny.step < 5) {
+				$ionicLoading.show({template: 'Chargement...'});
+				var geocoder = new google.maps.Geocoder();
+				
+				geocoder.geocode({
+					address: 
+						createNanny.accountData.address + ' ' + 
+						createNanny.accountData.address2 + ', ' + 
+						createNanny.accountData.postcode + ', ' + 
+						createNanny.accountData.city +', France'
+				}, function(results, status) {
+					if(results.length > 0) {
+						createNanny.accountData.lat = results[0].geometry.location.lat();
+						createNanny.accountData.lng = results[0].geometry.location.lng();
+						createNanny.step++;
+					} else {
+						$cordovaToast.show("Adresse introuvable.", 'short', 'bottom');
+					}
+					$ionicLoading.hide();
+				});
 			} else if(form.$valid && createNanny.step == 5) {
 				if(createNanny.password != createNanny.confirmPassword) {
 					$cordovaToast.show("Les mots de passe ne sont pas identiques.", 'short', 'bottom');
@@ -110,12 +134,15 @@
 			var nanny = angular.copy(createNanny.accountData);
 			delete nanny.confirmPassword;
 			nanny.password = md5(nanny.password);
+			console.info(nanny);
+			$ionicLoading.show({template: 'Chargement...'});
 			$http({
 				url: API_URL + '/api/nannies',
 				method: 'POST',
 				data: $.param(nanny)
 			})
 			.success(function(res) {
+				$ionicLoading.hide();
 				if(! res.success) {
 					$cordovaToast.show(res.message, 'short', 'bottom');
 				} else {
@@ -124,8 +151,10 @@
 					$cordovaToast.show(res.message, 'short', 'bottom');
 					// TODO : rediriger vers la page d'accueil du compte nounou
 				}
+				
 			})
 			.error(function(err) {
+				$ionicLoading.hide();
 				console.error(err);
 				$cordovaToast.show('Erreur de connexion', 'short', 'bottom');
 			});
@@ -133,9 +162,9 @@
 		
 	}
 	
-	AuthenticateCreateParentCtrl.$inject = ['$state', '$stateParams', '$cordovaToast', '$http', 'API_URL'];
+	AuthenticateCreateParentCtrl.$inject = ['$state', '$stateParams', '$cordovaToast', '$http', '$ionicLoading', 'API_URL'];
 	
-	function AuthenticateCreateParentCtrl($state, $routeParams, $cordovaToast, $http, API_URL) {
+	function AuthenticateCreateParentCtrl($state, $routeParams, $cordovaToast, $http, $ionicLoading, API_URL) {
 		var createParent = this;
 		
 		// Variables
@@ -164,8 +193,28 @@
 		createParent.changeStep = changeStep;
 		
 		function changeStep(form) {
-			if(form.$valid && createParent.step < 5) {
+			if(form.$valid && createParent.step < 4) {
 				createParent.step++;
+			} else if(form.$valid && createParent.step < 5) {
+				$ionicLoading.show({template: 'Chargement...'});
+				var geocoder = new google.maps.Geocoder();
+				
+				geocoder.geocode({
+					address: 
+						createParent.accountData.address + ' ' + 
+						createParent.accountData.address2 + ', ' + 
+						createParent.accountData.postcode + ', ' + 
+						createParent.accountData.city +', France'
+				}, function(results, status) {
+					if(results.length > 0) {
+						createParent.accountData.lat = results[0].geometry.location.lat();
+						createParent.accountData.lng = results[0].geometry.location.lng();
+						createParent.step++;
+					} else {
+						$cordovaToast.show("Adresse introuvable.", 'short', 'bottom');
+					}
+					$ionicLoading.hide();
+				});
 			} else if(form.$valid && createParent.step == 5) {
 				if(createParent.password != createParent.confirmPassword) {
 					$cordovaToast.show("Les mots de passe ne sont pas identiques.", 'short', 'bottom');
@@ -181,12 +230,14 @@
 			var parent = angular.copy(createParent.accountData);
 			delete parent.confirmPassword;
 			parent.password = md5(parent.password);
+			$ionicLoading.show({template: 'Chargement...'});
 			$http({
 				url: API_URL + '/api/parents',
 				method: 'POST',
 				data: $.param(parent)
 			})
 			.success(function(res) {
+				$ionicLoading.hide();
 				if(! res.success) {
 					$cordovaToast.show(res.message, 'short', 'bottom');
 				} else {
@@ -197,6 +248,7 @@
 				}
 			})
 			.error(function(err) {
+				$ionicLoading.hide();
 				console.error(err);
 				$cordovaToast.show('Erreur de connexion', 'short', 'bottom');
 			});
