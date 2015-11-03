@@ -3,7 +3,8 @@
 
 	angular.module('myNounou')
 		.controller('AuthenticateCtrl', AuthenticateCtrl)
-		.controller('AuthenticateCreateNannyCtrl', AuthenticateCreateNannyCtrl);
+		.controller('AuthenticateCreateNannyCtrl', AuthenticateCreateNannyCtrl)
+		.controller('AuthenticateCreateParentCtrl', AuthenticateCreateParentCtrl);
 	
 	AuthenticateCtrl.$inject = ['$state', '$stateParams', '$cordovaToast', '$http', 'API_URL'];
 	
@@ -113,6 +114,77 @@
 				url: API_URL + '/api/nannies',
 				method: 'POST',
 				data: $.param(nanny)
+			})
+			.success(function(res) {
+				if(! res.success) {
+					$cordovaToast.show(res.message, 'short', 'bottom');
+				} else {
+					sessionStorage.setItem('user_id', res.data._id);
+					sessionStorage.setItem('token', res.token);
+					$cordovaToast.show(res.message, 'short', 'bottom');
+					// TODO : rediriger vers la page d'accueil du compte nounou
+				}
+			})
+			.error(function(err) {
+				console.error(err);
+				$cordovaToast.show('Erreur de connexion', 'short', 'bottom');
+			});
+		}
+		
+	}
+	
+	AuthenticateCreateParentCtrl.$inject = ['$state', '$stateParams', '$cordovaToast', '$http', 'API_URL'];
+	
+	function AuthenticateCreateParentCtrl($state, $routeParams, $cordovaToast, $http, API_URL) {
+		var createParent = this;
+		
+		// Variables
+		createParent.accountData = {
+			email: '',
+			firstname: '',
+			lastname: '',
+			password: '',
+			confirmPassword: '',
+			age: null,
+			gender: 'F',
+			address: '',
+			address2: '',
+			postcode: '',
+			city: '',
+			tel: '',
+			description: '',
+		};
+		createParent.step = 1;
+		createParent.typeDescription = {
+			nanny: "Vous êtes assistante maternelle et vous vous occupez d'un ou plusieurs enfants.",
+			babysitter: "Vous gardez des enfants pendant quelques heures pour permettre aux parents de sortir."
+		};
+		
+		// Methods
+		createParent.changeStep = changeStep;
+		
+		function changeStep(form) {
+			if(form.$valid && createParent.step < 5) {
+				createParent.step++;
+			} else if(form.$valid && createParent.step == 5) {
+				if(createParent.password != createParent.confirmPassword) {
+					$cordovaToast.show("Les mots de passe ne sont pas identiques.", 'short', 'bottom');
+				} else {
+					create();
+				}
+			} else {
+				$cordovaToast.show('Les champs doivent être remplis correctement.', 'short', 'bottom');
+			}
+		}
+		
+		function create() {
+			var parent = angular.copy(createParent.accountData);
+			delete parent.confirmPassword;
+			parent.password = md5(parent.password);
+			$http({
+				url: API_URL + '/api/parents',
+				method: 'POST',
+				data: $.param(parent)
 			})
 			.success(function(res) {
 				if(! res.success) {

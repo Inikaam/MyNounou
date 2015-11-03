@@ -42,6 +42,13 @@
 					templateUrl : 'templates/authenticate/create-nanny.html',
 					controller : 'AuthenticateCreateNannyCtrl as createNanny'
 				})
+				
+				.state('create-parent', {
+					url : '/authenticate/create-parent',
+					cache: false,
+					templateUrl : 'templates/authenticate/create-parent.html',
+					controller : 'AuthenticateCreateParentCtrl as createParent'
+				})
 	
 				// setup an abstract state for the tabs directive
 				.state('tab', {
