@@ -39,7 +39,15 @@
 					templateUrl : 'templates/authenticate/create-nanny.html',
 					controller : 'AuthenticateCreateNannyCtrl as createNanny'
 				})
-	
+				
+				// Search parents
+				.state('search-parents', {
+					url : '/search-parents',
+					cache: false,
+					templateUrl : 'templates/search/search-parents',
+					controller : 'SearchParents as searchParents'
+				})
+
 				// setup an abstract state for the tabs directive
 				.state('tab', {
 					url : '/tab',
