@@ -5,9 +5,9 @@
 		.controller('AuthenticateCtrl', AuthenticateCtrl)
 		.controller('AuthenticateCreateNannyCtrl', AuthenticateCreateNannyCtrl);
 	
-	AuthenticateCtrl.$inject = ['$state', '$stateParams', '$cordovaToast', '$http'];
+	AuthenticateCtrl.$inject = ['$state', '$stateParams', '$cordovaToast', '$http', 'API_URL'];
 	
-	function AuthenticateCtrl($state, $routeParams, $cordovaToast, $http) {
+	function AuthenticateCtrl($state, $routeParams, $cordovaToast, $http, API_URL) {
 		var auth = this;
 		
 		// Variables
@@ -20,7 +20,29 @@
 		
 		function login() {
 			if(auth.loginForm.$valid) {
-				// TODO : connexion avec le serveur
+				var loginData = angular.copy(auth.loginData);
+				loginData.password = md5(loginData.password);
+				$http({
+					method: 'POST',
+					url: API_URL + '/api/authenticate',
+					data: $.param(loginData)
+				})
+				.success(function(res){
+					if(! res.success) {
+						$cordovaToast.show(res.message, 'short', 'bottom');
+					} else {
+						sessionStorage.setItem('user_id', res.data._id);
+						sessionStorage.setItem('token', res.token);
+						if(res.data.dispos) {
+							// TODO : rediriger vers la page nounous
+						} else {
+							// TODO : rediriger vers la page parents
+						}
+					}
+				})
+				.error(function(err){
+					console.error(err);
+				});
 			} else {
 				$cordovaToast.show('Les champs doivent être remplis correctement.', 'short', 'bottom');
 			}
@@ -88,7 +110,7 @@
 			delete nanny.confirmPassword;
 			nanny.password = md5(nanny.password);
 			$http({
-				url: 'http://localhost:8080/api/nannies',
+				url: API_URL + '/api/nannies',
 				method: 'POST',
 				data: $.param(nanny)
 			})
@@ -98,10 +120,11 @@
 					$cordovaToast.show(res.message, 'short', 'bottom');
 				} else {
 					$cordovaToast.show(res.message, 'short', 'bottom');
+					// TODO : rediriger vers la page d'accueil du compte nounou
 				}
 			})
 			.error(function(err) {
-				throw err;
+				console.error(err);
 				$cordovaToast.show('Erreur de connexion', 'short', 'bottom');
 			});
 		}
