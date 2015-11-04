@@ -78,10 +78,22 @@
 
 				.state('nannies.calendar', {
 					url : '/calendar',
+					cache: false,
 					views : {
 						'nannies-calendar' : {
-							templateUrl : 'templates/nannies/calendar.html',
+							templateUrl : 'templates/calendar/calendar.html',
 							controller : 'CalendarCtrl as calendar'
+						}
+					}
+				})
+				
+				.state('nannies.calendar-edit-day', {
+					url : '/calendar/:day',
+					cache: false,
+					views : {
+						'nannies-calendar' : {
+							templateUrl : 'templates/calendar/calendar-edit-day.html',
+							controller : 'CalendarEditDayCtrl as editDay'
 						}
 					}
 				})

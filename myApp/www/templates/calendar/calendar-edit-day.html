@@ -1,0 +1,21 @@
+<ion-view view-title="Plages horaires" class="search-parents">
+	<ion-content class="padding">
+		<h1>Plages horaires<br />du lundi</h1>
+		<div class="row">
+			<div class="col">Heure de début</div>
+			<div class="col">Heure de fin</div>
+		</div>
+		<div class="row" ng-repeat="range in editDay.dispo">
+			<div class="col">
+				<label class="item item-input">
+			    	<input type="text" ng-model="range.start" placeholder="Début" />
+			 	</label>
+			</div>
+			<div class="col">
+				<label class="item item-input">
+			    	<input type="text" ng-model="range.end" placeholder="Fin" />
+			 	</label>
+			</div>
+		</div>
+	</ion-content>
+</ion-view>
