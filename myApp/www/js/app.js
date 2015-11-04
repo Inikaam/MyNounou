@@ -74,6 +74,24 @@
 							controller : 'SearchParentsCtrl as searchParents'
 						}
 					}
+				})
+
+				// ***** Parents dashboard *****
+				
+				.state('parents', {
+					url : '/parents',
+					abstract : true,
+					templateUrl : 'templates/parents/tabs.html'
+				})
+				
+				.state('parents.search-nannies', {
+					url : '/search-nannies',
+					views : {
+						'tab-dash' : {
+							templateUrl : 'templates/parents/search.html',
+							controller : 'NanniesSearchCtrl as searchNannies'
+						}
+					}
 				});
 			
 			// default route
@@ -91,7 +109,7 @@
 				if(sessionStorage.getItem('token') && sessionStorage.getItem('user_id')) {
 					if(sessionStorage.getItem('user_type') == 'parent') {
 
-						// TODO : redirection dashboard parent
+						$state.go('parents.search-nannies');
 					
 					} else if(sessionStorage.getItem('user_type') == 'nanny')
 						$state.go('nannies.search-parents');

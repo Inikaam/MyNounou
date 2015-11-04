@@ -2,19 +2,13 @@
 	'use strict';
 
 	angular.module('myNounou')
-		.controller('ParentsSearchCtrl', ParentsSearchCtrl)
-		.controller('ParentCardCtrl', ParentCardCtrl);
+		.controller('NanniesSearchCtrl', NanniesSearchCtrl);
+
 	
-	ParentsSearchCtrl.$inject = ['$state', '$stateParams', '$cordovaToast', '$http', '$ionicLoading', 'API_URL'];
+	NanniesSearchCtrl.$inject = ['$state', '$stateParams', '$cordovaToast', '$http', '$ionicLoading', 'API_URL'];
 	
-	function ParentsSearchCtrl($state, $routeParams, $cordovaToast, $http, $ionicLoading, API_URL) {
+	function NanniesSearchCtrl($state, $routeParams, $cordovaToast, $http, $ionicLoading, API_URL) {
 		var pSearch = this;
-	}
-	
-	ParentCardCtrl.$inject = ['$state', '$stateParams', '$cordovaToast', '$http', '$ionicLoading', 'API_URL'];
-	
-	function ParentCardCtrl($state, $routeParams, $cordovaToast, $http, $ionicLoading, API_URL) {
-		var pCard = this;
 	}
 	
 })();
