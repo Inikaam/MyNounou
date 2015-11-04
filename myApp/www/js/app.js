@@ -36,50 +36,50 @@
 					abstract : true,
 					templateUrl: ''
 				})
-			
+
 				.state('authenticate.login', {
 					url : '/login',
 					cache: false,
 					templateUrl : 'templates/authenticate/login.html',
 					controller : 'LoginCtrl as auth'
 				})
-				
+
 				.state('authenticate.create-nanny', {
 					url : '/create-nanny',
 					cache: false,
 					templateUrl : 'templates/authenticate/create-nanny.html',
 					controller : 'CreateNannyCtrl as createNanny'
 				})
-				
+
 				.state('authenticate.create-parent', {
 					url : '/create-parent',
 					cache: false,
 					templateUrl : 'templates/authenticate/create-parent.html',
 					controller : 'CreateParentCtrl as createParent'
 				})
-				
+
 				// ***** Nannies dashboard *****
-				
+
 				.state('nannies', {
 					url : '/nannies',
 					abstract : true,
 					templateUrl : 'templates/nannies/tabs.html'
 				})
-				
+
 				.state('nannies.search-parents', {
 					url : '/search-parents',
 					views : {
-						'tab-dash' : {
+						'nannies-search-parents' : {
 							templateUrl : 'templates/nannies/search.html',
 							controller : 'SearchParentsCtrl as searchParents'
 						}
 					}
 				})
-				
+
 				.state('nannies.calendar', {
 					url : '/calendar',
 					views : {
-						'tab-dash' : {
+						'nannies-calendar' : {
 							templateUrl : 'templates/nannies/calendar.html',
 							controller : 'CalendarCtrl as calendar'
 						}
@@ -87,13 +87,13 @@
 				})
 
 				// ***** Parents dashboard *****
-				
+
 				.state('parents', {
 					url : '/parents',
 					abstract : true,
 					templateUrl : 'templates/parents/tabs.html'
 				})
-				
+
 				.state('parents.search-nannies', {
 					url : '/search-nannies',
 					views : {
@@ -103,17 +103,17 @@
 						}
 					}
 				});
-			
+
 			// default route
 			$urlRouterProvider.otherwise('/authenticate/login');
 
 		});
-	
+
 	MainCtrl.$inject = ['$scope', '$state'];
-	
+
 	function MainCtrl($scope, $state) {
 		$scope.$on('$ionicView.beforeEnter', function(event, targetView) {
-			
+
 			// ***** Authentication restriction access *****
 			if(/^authenticate\..*$/.test(targetView.stateId)) {
 				if(sessionStorage.getItem('token') && sessionStorage.getItem('user_id')) {
@@ -128,15 +128,15 @@
 					}
 				}
 			}
-			
+
 			// ***** Nannies Dashboard restriction access ******
 			if(/^nannies\..*$/.test(targetView.stateId)) {
-				if(! sessionStorage.getItem('token') || 
-					sessionStorage.getItem('user_id') || 
+				if(! sessionStorage.getItem('token') ||
+					sessionStorage.getItem('user_id') ||
 					sessionStorage.getItem('user_type') ||
 					sessionStorage.getItem('user_type') != 'nanny') {
-					
-					
+
+
 				}
 			}
 
