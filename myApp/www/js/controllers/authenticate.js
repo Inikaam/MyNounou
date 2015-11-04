@@ -39,10 +39,10 @@
 						sessionStorage.setItem('token', res.token);
 						if(res.data.dispos) {
 							sessionStorage.setItem('user_type', 'nanny');
-							$state.go('tab.search-parents');
+							$state.go('nannies.search-parents');
 						} else {
 							sessionStorage.setItem('user_type', 'parent');
-							// TODO : rediriger vers la page parents
+							$state.go('parents.search-nannies');
 						}
 					}
 				})

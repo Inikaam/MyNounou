@@ -107,11 +107,9 @@
 			// ***** Authentication restriction access *****
 			if(/^authenticate\..*$/.test(targetView.stateId)) {
 				if(sessionStorage.getItem('token') && sessionStorage.getItem('user_id')) {
-					if(sessionStorage.getItem('user_type') == 'parent') {
-
+					if(sessionStorage.getItem('user_type') == 'parent')
 						$state.go('parents.search-nannies');
-					
-					} else if(sessionStorage.getItem('user_type') == 'nanny')
+					else if(sessionStorage.getItem('user_type') == 'nanny')
 						$state.go('nannies.search-parents');
 					else {
 						sessionStorage.removeItem('token');
