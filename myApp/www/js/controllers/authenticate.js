@@ -2,13 +2,13 @@
 	'use strict';
 
 	angular.module('myNounou')
-		.controller('AuthenticateCtrl', AuthenticateCtrl)
-		.controller('AuthenticateCreateNannyCtrl', AuthenticateCreateNannyCtrl)
-		.controller('AuthenticateCreateParentCtrl', AuthenticateCreateParentCtrl);
+		.controller('LoginCtrl', LoginCtrl)
+		.controller('CreateNannyCtrl', CreateNannyCtrl)
+		.controller('CreateParentCtrl', CreateParentCtrl);
 	
-	AuthenticateCtrl.$inject = ['$state', '$stateParams', '$cordovaToast', '$http', '$ionicLoading', 'API_URL'];
+	LoginCtrl.$inject = ['$state', '$stateParams', '$cordovaToast', '$http', '$ionicLoading', 'API_URL'];
 	
-	function AuthenticateCtrl($state, $routeParams, $cordovaToast, $http, $ionicLoading, API_URL) {
+	function LoginCtrl($state, $routeParams, $cordovaToast, $http, $ionicLoading, API_URL) {
 		var auth = this;
 		
 		// Variables
@@ -16,6 +16,7 @@
 			email: '',
 			password: ''
 		}
+		
 		// Methods
 		auth.login = login;
 		
@@ -37,8 +38,10 @@
 						sessionStorage.setItem('user_id', res.data._id);
 						sessionStorage.setItem('token', res.token);
 						if(res.data.dispos) {
-							// TODO : rediriger vers la page nounous
+							sessionStorage.setItem('user_type', 'nanny');
+							$state.go('tab.search-parents');
 						} else {
+							sessionStorage.setItem('user_type', 'parent');
 							// TODO : rediriger vers la page parents
 						}
 					}
@@ -55,9 +58,9 @@
 		
 	}
 	
-	AuthenticateCreateNannyCtrl.$inject = ['$state', '$stateParams', '$cordovaToast', '$http', '$ionicLoading', 'API_URL'];
+	CreateNannyCtrl.$inject = ['$state', '$stateParams', '$cordovaToast', '$http', '$ionicLoading', 'API_URL'];
 	
-	function AuthenticateCreateNannyCtrl($state, $routeParams, $cordovaToast, $http, $ionicLoading, API_URL) {
+	function CreateNannyCtrl($state, $routeParams, $cordovaToast, $http, $ionicLoading, API_URL) {
 		var createNanny = this;
 		
 		// Variables
@@ -147,8 +150,9 @@
 				} else {
 					sessionStorage.setItem('user_id', res.data._id);
 					sessionStorage.setItem('token', res.token);
+					sessionStorage.setItem('user_type', 'nanny');
+					$state.go('tab.search-parents');
 					$cordovaToast.show(res.message, 'short', 'bottom');
-					// TODO : rediriger vers la page d'accueil du compte nounou
 				}
 				
 			})
@@ -161,9 +165,9 @@
 		
 	}
 	
-	AuthenticateCreateParentCtrl.$inject = ['$state', '$stateParams', '$cordovaToast', '$http', '$ionicLoading', 'API_URL'];
+	CreateParentCtrl.$inject = ['$state', '$stateParams', '$cordovaToast', '$http', '$ionicLoading', 'API_URL'];
 	
-	function AuthenticateCreateParentCtrl($state, $routeParams, $cordovaToast, $http, $ionicLoading, API_URL) {
+	function CreateParentCtrl($state, $routeParams, $cordovaToast, $http, $ionicLoading, API_URL) {
 		var createParent = this;
 		
 		// Variables
@@ -242,8 +246,9 @@
 				} else {
 					sessionStorage.setItem('user_id', res.data._id);
 					sessionStorage.setItem('token', res.token);
+					sessionStorage.setItem('user_type', 'parent');
 					$cordovaToast.show(res.message, 'short', 'bottom');
-					// TODO : rediriger vers la page d'accueil du compte nounou
+					// TODO : rediriger vers search-nannies
 				}
 			})
 			.error(function(err) {
