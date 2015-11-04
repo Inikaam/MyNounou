@@ -2,7 +2,7 @@
 
 (function() {
 
-	angular.module('myNounou', [ 'ionic', 'google.places', 'ngCordova' ])
+	angular.module('myNounou', [ 'ionic', 'google.places', 'ngCordova', 'ionic-timepicker' ])
 
 	.run(function($ionicPlatform) {
 		$ionicPlatform

@@ -3,6 +3,25 @@
 		<div class="logo">
 			<img src="img/logo-typo.png">
 		</div>
+
 		<h1>Recherche d'annonces</h1>
+
+		<form>
+			<div class="list list-inset">
+		  		<label class="item item-input">
+			    	<i class="icon ion-search placeholder-icon"></i>
+			    	<input type="text" placeholder="Locatilsation">
+		  		</label>
+			</div>
+		</form>
+
+		<ionic-timepicker etime="searchNannies.slots.epochTime" format="searchNannies.slots.format" step="searchNannies.slots.step" callback="searchNannies.timePickerCallback">    
+		<button class="button button-block button-positive">Heure de début</button>
+		</ionic-timepicker>
+
+		<ionic-timepicker etime="searchNannies.slots.epochTime" format="searchNannies.slots.format" step="searchNannies.slots.step" callback="searchNannies.timePickerCallback">    
+		<button class="button button-block button-positive">Heure de fin</button>
+		</ionic-timepicker>
+
 	</ion-content>
 </ion-view>
