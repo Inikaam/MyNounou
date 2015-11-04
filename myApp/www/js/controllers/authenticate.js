@@ -70,9 +70,9 @@
 		createNanny.changeStep = changeStep;
 		
 		function changeStep(form) {
-			if(form.$valid && createNanny.step < 6) {
+			if(form.$valid && createNanny.step < 5) {
 				createNanny.step++;
-			} else if(form.$valid && createNanny.step == 6) {
+			} else if(form.$valid && createNanny.step == 5) {
 				if(createNanny.password != createNanny.confirmPassword) {
 					$cordovaToast.show("Les mots de passe ne sont pas identiques.", 'short', 'bottom');
 				} else {

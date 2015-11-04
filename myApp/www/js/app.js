@@ -47,7 +47,7 @@
 				.state('search-parents', {
 					url : '/search-parents',
 					cache: false,
-					templateUrl : 'templates/search/search-parents',
+					templateUrl : 'templates/search/search-parents.html',
 					controller : 'SearchParents as searchParents'
 				})
 

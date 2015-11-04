@@ -106,36 +106,5 @@
 				</div>
 				<button type="submit" class="button button-block button-calm">C'est parti</button>
 			</form>
-
-			<form name="createNanny.step6Form" ng-submit="createNanny.changeStep(createNanny.step6Form)" class="step6" ng-show="createNanny.step == 6" novalidate>
-				<h2>Vos honoraires</h2>
-				<div class="list">
-					<label class="item item-input item-stacked-label">
-						<span class="input-label">Tarif à l'heure en &euro; (euros)</span>
-						<input type="number" placeholder="Tarif" name="price" ng-model="createNanny.accountData.price" required>
-					</label>
-				</div>
-				<h2>Vos coordonnées</h2>
-				<div class="list">
-					<label class="item item-input">
-						<input type="text" placeholder="Adresse" name="address" ng-model="createNanny.accountData.address" required>
-					</label>
-					<label class="item item-input">
-						<input type="text" placeholder="Complément d'adresse" name="address2" ng-model="createNanny.accountData.address2">
-					</label>
-					<label class="item item-input">
-						<input type="text" placeholder="Code postal" name="postcode" ng-model="createNanny.accountData.postcode" required>
-					</label>
-					<label class="item item-input">
-						<input type="text" placeholder="Ville" name="city" ng-model="createNanny.accountData.city" required>
-					</label>
-					<label class="item item-input">
-						<input type="text" placeholder="Numéro de téléphone" name="tel" ng-model="createNanny.accountData.tel" required>
-					</label>
-				</div>
-				<button type="submit" class="button button-block button-calm"><i class="ion-checkmark-round"></i></button>
-			</form>
-
-
 	</ion-content>
 </ion-view>
