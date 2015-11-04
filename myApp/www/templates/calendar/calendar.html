@@ -1,0 +1,73 @@
+<ion-view view-title="Disponibilités" class="search-parents">
+	<ion-content class="padding">
+		<h1>Vos horaires</h1>
+		<a class="row" href="#/nannies/calendar/lun">
+			<div class="col col-25"><strong>Lun</strong></div>
+			<div class="col">
+				<span ng-repeat="range in calendar.dispos.lun">
+					{{range.start}} - {{range.end}}
+				</span>
+			</div>
+		</a>
+		<a class="row" href="#/nannies/calendar/mar">
+			<div class="col col-25"><strong>Mar</strong></div>
+			<div class="col">
+				<span ng-repeat="range in calendar.dispos.mar">
+					{{range.start}} - {{range.end}}
+				</span>
+			</div>
+		</a>
+		<a class="row" href="#/nannies/calendar/mer">
+			<div class="col col-25"><strong>Mer</strong></div>
+			<div class="col">
+				<span ng-repeat="range in calendar.dispos.mer">
+					{{range.start}} - {{range.end}}
+				</span>
+			</div>
+		</a>
+		<a class="row" href="#/nannies/calendar/jeu">
+			<div class="col col-25"><strong>Jeu</strong></div>
+			<div class="col">
+				<span ng-repeat="range in calendar.dispos.jeu">
+					{{range.start}} - {{range.end}}
+				</span>
+			</div>
+		</a>
+		<a class="row" href="#/nannies/calendar/ven">
+			<div class="col col-25"><strong>Ven</strong></div>
+			<div class="col">
+				<span ng-repeat="range in calendar.dispos.ven">
+					{{range.start}} - {{range.end}}
+				</span>
+			</div>
+		</a>
+		<a class="row" href="#/nannies/calendar/sam">
+			<div class="col col-25"><strong>Sam</strong></div>
+			<div class="col">
+				<span ng-repeat="range in calendar.dispos.sam">
+					{{range.start}} - {{range.end}}
+				</span>
+			</div>
+		</a>
+		<a class="row" href="#/nannies/calendar/dim">
+			<div class="col col-25"><strong>Dim</strong></div>
+			<div class="col">
+				<span ng-repeat="range in calendar.dispos.dim">
+					{{range.start}} - {{range.end}}
+				</span>
+			</div>
+		</a>
+		<h1>Prochains rendez-vous</h1>
+		<div ng-repeat="restriction in calendar.restrictions | orderBy:'start'">
+			<div class="row">
+				<div class="col">
+					Du {{restriction.start|date : 'dd/MM/yyyy'}} au {{restriction.end|date : 'dd/MM/yyyy'}}
+				</div>
+				<div class="col">
+					De {{restriction.start|date: 'hh:mm'}} à {{restriction.end|date: 'hh:mm'}}
+				</div>
+			</div>
+			<p>{{restriction.reason}}</p>
+		</div>
+	</ion-content>
+</ion-view>
