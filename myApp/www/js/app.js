@@ -24,105 +24,96 @@
 			});
 		})
 		.constant('API_URL', 'http://localhost:8080')
+		.controller('MainCtrl', MainCtrl)
 		.config(function($stateProvider, $urlRouterProvider, $httpProvider) {
 			$httpProvider.defaults.useXDomain = true;
 			delete $httpProvider.defaults.headers.common['X-Requested-With'];
 			$httpProvider.defaults.headers.post['Content-Type'] = 'application/x-www-form-urlencoded;charset=utf-8';
 			$stateProvider
+				// ***** Authentication *****
 				.state('authenticate', {
 					url : '/authenticate',
+					abstract : true,
+					templateUrl: ''
+				})
+			
+				.state('authenticate.login', {
+					url : '/login',
 					cache: false,
-					templateUrl : 'templates/authenticate/authenticate.html',
-					controller : 'AuthenticateCtrl as auth'
+					templateUrl : 'templates/authenticate/login.html',
+					controller : 'LoginCtrl as auth'
 				})
 				
-				.state('create-nanny', {
-					url : '/authenticate/create-nanny',
+				.state('authenticate.create-nanny', {
+					url : '/create-nanny',
 					cache: false,
 					templateUrl : 'templates/authenticate/create-nanny.html',
-					controller : 'AuthenticateCreateNannyCtrl as createNanny'
+					controller : 'CreateNannyCtrl as createNanny'
 				})
 				
-				// Search parents
-				.state('search-parents', {
-					url : '/search-parents',
+				.state('authenticate.create-parent', {
+					url : '/create-parent',
 					cache: false,
-					templateUrl : 'templates/search/search-parents.html',
-					controller : 'SearchParents as searchParents'
+					templateUrl : 'templates/authenticate/create-parent.html',
+					controller : 'CreateParentCtrl as createParent'
 				})
-
-				// setup an abstract state for the tabs directive
-				.state('tab', {
-					url : '/tab',
+				
+				// ***** Nannies dashboard *****
+				
+				.state('nannies', {
+					url : '/nannies',
 					abstract : true,
-					templateUrl : 'templates/tabs.html'
+					templateUrl : 'templates/nannies/tabs.html'
 				})
-	
-				// Each tab has its own nav history stack:
-				.state('tab.dash', {
-					url : '/dash',
+				
+				.state('nannies.search-parents', {
+					url : '/search-parents',
 					views : {
 						'tab-dash' : {
-							templateUrl : 'templates/tab-dash.html',
-							controller : 'DashCtrl'
-						}
-					}
-				})
-				.state('tab.results', {
-					url : '/results',
-					params : {
-						vicinity : {},
-						lat : {},
-						lng : {},
-						need : {}
-					},
-					views : {
-						'tab-dash' : {
-							templateUrl : 'templates/results.html',
-							controller : 'ResultsCtrl'
-						}
-					}
-				})
-				.state('tab.result', {
-					url : '/results/:id',
-					views : {
-						'tab-dash' : {
-							templateUrl : 'templates/result.html',
-							controller : 'ResultCtrl'
-						}
-					}
-				})
-				.state('tab.chats', {
-					url : '/chats',
-					views : {
-						'tab-chats' : {
-							templateUrl : 'templates/tab-chats.html',
-							controller : 'ChatsCtrl'
-						}
-					}
-				})
-				.state('tab.chat-detail', {
-					url : '/chats/:chatId',
-					views : {
-						'tab-chats' : {
-							templateUrl : 'templates/chat-detail.html',
-							controller : 'ChatDetailCtrl'
-						}
-					}
-				})
-				.state('tab.account', {
-					url : '/account',
-					views : {
-						'tab-account' : {
-							templateUrl : 'templates/tab-account.html',
-							controller : 'AccountCtrl'
+							templateUrl : 'templates/nannies/search.html',
+							controller : 'SearchParentsCtrl as searchParents'
 						}
 					}
 				});
 			
 			// default route
-			$urlRouterProvider.otherwise('/authenticate');
+			$urlRouterProvider.otherwise('/authenticate/login');
 
 		});
+	
+	MainCtrl.$inject = ['$scope', '$state'];
+	
+	function MainCtrl($scope, $state) {
+		$scope.$on('$ionicView.beforeEnter', function(event, targetView) {
+			
+			// ***** Authentication restriction access *****
+			if(/^authenticate\..*$/.test(targetView.stateId)) {
+				if(sessionStorage.getItem('token') && sessionStorage.getItem('user_id')) {
+					if(sessionStorage.getItem('user_type') == 'parent') {
 
+						// TODO : redirection dashboard parent
+					
+					} else if(sessionStorage.getItem('user_type') == 'nanny')
+						$state.go('nannies.search-parents');
+					else {
+						sessionStorage.removeItem('token');
+						sessionStorage.removeItem('user_id');
+						sessionStorage.removeItem('user_type');
+					}
+				}
+			}
+			
+			// ***** Nannies Dashboard restriction access ******
+			if(/^nannies\..*$/.test(targetView.stateId)) {
+				if(! sessionStorage.getItem('token') || 
+					sessionStorage.getItem('user_id') || 
+					sessionStorage.getItem('user_type') ||
+					sessionStorage.getItem('user_type') != 'nanny') {
+					
+					
+				}
+			}
+
+		});
+	}
 })();

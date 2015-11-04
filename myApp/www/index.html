@@ -23,7 +23,7 @@
     <script src="cordova.js"></script>
     
 	<script src="lib/MD5/md5.min.js"></script>
-    <script src="https://maps.googleapis.com/maps/api/js?libraries=places"></script>
+    <script src="https://maps.googleapis.com/maps/api/js?v=3&libraries=geometry"></script>
     <script src="lib/angular-google-places-autocomplete/src/autocomplete.js"></script>
 
     <link rel="stylesheet" href="lib/angular-google-places-autocomplete/src/autocomplete.css">
@@ -31,10 +31,11 @@
 
     <!-- your app's js -->
     <script src="js/app.js"></script>
-    <script src="js/services/Nanny.js"></script>
     <script src="js/controllers/authenticate.js"></script>
+    <script src="js/controllers/parents.js"></script>
+    <script src="js/controllers/nannies.js"></script>
   </head>
-  <body ng-app="myNounou">
+  <body ng-app="myNounou" ng-controller="MainCtrl">
     <!--
       The nav bar that will be updated as we navigate between views.
     -->
