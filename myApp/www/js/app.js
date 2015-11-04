@@ -75,6 +75,16 @@
 						}
 					}
 				})
+				
+				.state('nannies.calendar', {
+					url : '/calendar',
+					views : {
+						'tab-dash' : {
+							templateUrl : 'templates/nannies/calendar.html',
+							controller : 'CalendarCtrl as calendar'
+						}
+					}
+				})
 
 				// ***** Parents dashboard *****
 				

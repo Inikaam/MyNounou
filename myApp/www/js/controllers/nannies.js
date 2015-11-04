@@ -3,7 +3,7 @@
 
 	angular.module('myNounou')
 		.controller('SearchParentsCtrl', SearchParentsCtrl)
-		.controller('ParentCardCtrl', ParentCardCtrl);
+		.controller('CalendarCtrl', CalendarCtrl);
 	
 	SearchParentsCtrl.$inject = ['$state', '$stateParams', '$cordovaToast', '$http', '$ionicLoading', 'API_URL'];
 	
@@ -11,10 +11,10 @@
 		var pSearch = this;
 	}
 	
-	ParentCardCtrl.$inject = ['$state', '$stateParams', '$cordovaToast', '$http', '$ionicLoading', 'API_URL'];
+	CalendarCtrl.$inject = ['$state', '$stateParams', '$cordovaToast', '$http', '$ionicLoading', 'API_URL'];
 	
-	function ParentCardCtrl($state, $routeParams, $cordovaToast, $http, $ionicLoading, API_URL) {
-		var pCard = this;
+	function CalendarCtrl($state, $routeParams, $cordovaToast, $http, $ionicLoading, API_URL) {
+		var calendar = this;
 	}
 	
 })();
