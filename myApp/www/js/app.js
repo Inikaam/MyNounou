@@ -25,6 +25,7 @@
 		})
 		.constant('API_URL', 'http://localhost:8080')
 		.controller('MainCtrl', MainCtrl)
+		.filter('time', timeFormat)
 		.config(function($stateProvider, $urlRouterProvider, $httpProvider) {
 			$httpProvider.defaults.useXDomain = true;
 			delete $httpProvider.defaults.headers.common['X-Requested-With'];
@@ -153,5 +154,17 @@
 			}
 
 		});
+	}
+	
+	function timeFormat() {
+		return function(input) {
+			var hours = Math.floor(input / 3600);
+			var min = Math.floor((input % 3600) / 60);
+			if(hours < 10)
+				hours = '0' + hours;
+			if(min < 10)
+				min = '0' + min;
+			return hours + ':' + min;
+		}
 	}
 })();

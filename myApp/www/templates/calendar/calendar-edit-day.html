@@ -1,20 +1,25 @@
 <ion-view view-title="Plages horaires" class="search-parents">
 	<ion-content class="padding">
 		<h1>Plages horaires<br />du lundi</h1>
+		
 		<div class="row">
 			<div class="col">Heure de début</div>
 			<div class="col">Heure de fin</div>
 		</div>
 		<div class="row" ng-repeat="range in editDay.dispo">
 			<div class="col">
-				<label class="item item-input">
-			    	<input type="text" ng-model="range.start" placeholder="Début" />
-			 	</label>
+				<ionic-timepicker etime="range.start" format="24" step="15" callback="editDay.timePickerCallback">
+					<label class="item item-input">
+				    	<p>{{range.start|time}}</p>
+				 	</label>
+			 	</ionic-timepicker>
 			</div>
 			<div class="col">
-				<label class="item item-input">
-			    	<input type="text" ng-model="range.end" placeholder="Fin" />
-			 	</label>
+				<ionic-timepicker etime="range.end" format="24" step="15" callback="editDay.timePickerCallback">
+					<label class="item item-input">
+				    	<p>{{range.end|time}}</p>
+				 	</label>
+			 	</ionic-timepicker>
 			</div>
 		</div>
 	</ion-content>

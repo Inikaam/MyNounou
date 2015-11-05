@@ -39,6 +39,12 @@
 	function CalendarEditDayCtrl($state, $routeParams, $cordovaToast, $http, $ionicLoading, API_URL) {
 		var editDay = this;
 		
+		// Variables
+		editDay.slots = { epochTime: 12600, format: 24, step: 15 };
+		
+		// Methods
+		editDay.timePickerCallback = function(){};
+		
 		$ionicLoading.show({template: 'Chargement...'});
 		$http({
 			method: 'GET',
@@ -52,7 +58,7 @@
 				if(res.data.dispos[$routeParams.day]) {
 					editDay.dispo = res.data.dispos[$routeParams.day];
 					if(editDay.dispo.length == 0)
-						editDay.dispo.push({});
+						editDay.dispo.push({start: 0, end: 0});
 				} else {
 					$state.go('nannies.calendar');
 				}
