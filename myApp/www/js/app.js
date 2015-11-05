@@ -4,6 +4,7 @@
 
 	angular.module('myNounou', [ 'ionic', 'google.places', 'ngCordova', 'ionic-timepicker' ])
 
+
 	.run(function($ionicPlatform) {
 		$ionicPlatform
 			.ready(function() {
@@ -25,6 +26,31 @@
 		})
 		.constant('API_URL', 'http://localhost:8080')
 		.controller('MainCtrl', MainCtrl)
+
+		/* Convert secondes in hour format */
+		.filter('millSecondsToTimeString', function() {
+		  return function (time) {
+				var reste = time;
+				var result = '';
+ 
+				var nbHours = Math.floor(reste/3600);
+				reste -= nbHours * 3600;
+ 
+				var nbMinutes = Math.floor(reste/60);
+				reste -= nbMinutes * 60;
+ 
+				var nbSeconds = reste;
+ 
+				if (nbHours > 0)
+					result = result + nbHours + ' : ';
+ 
+				if (nbMinutes > 0)
+					result = result + nbMinutes;
+ 
+				return result;
+			}
+		})
+
 		.config(function($stateProvider, $urlRouterProvider, $httpProvider) {
 			$httpProvider.defaults.useXDomain = true;
 			delete $httpProvider.defaults.headers.common['X-Requested-With'];
