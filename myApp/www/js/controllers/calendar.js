@@ -3,7 +3,8 @@
 
 	angular.module('myNounou')
 		.controller('CalendarCtrl', CalendarCtrl)
-		.controller('CalendarEditDayCtrl', CalendarEditDayCtrl);
+		.controller('CalendarEditDayCtrl', CalendarEditDayCtrl)
+		.controller('CalendarEditRestrictionCtrl', CalendarEditRestrictionCtrl);
 
 	CalendarCtrl.$inject = ['$state', '$stateParams', '$cordovaToast', '$http', '$ionicLoading', 'API_URL'];
 
@@ -127,6 +128,14 @@
 				console.info(err);
 			});
 		}
+	}
+	
+	CalendarEditRestrictionCtrl.$inject = ['$state', '$ionicHistory', '$stateParams', '$cordovaToast', '$http', '$ionicLoading', 'API_URL'];
+	
+	function CalendarEditRestrictionCtrl($state, $ionicHistory, $routeParams, $cordovaToast, $http, $ionicLoading, API_URL) {
+		var editRestrict = this;
+		
+		
 	}
 
 })();

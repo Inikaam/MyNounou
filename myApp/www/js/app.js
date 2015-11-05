@@ -29,7 +29,6 @@
 		.config(function($stateProvider, $urlRouterProvider, $httpProvider) {
 			$httpProvider.defaults.useXDomain = true;
 			delete $httpProvider.defaults.headers.common['X-Requested-With'];
-//			$httpProvider.defaults.headers.post['Content-Type'] = 'application/x-www-form-urlencoded;charset=utf-8';
 			$stateProvider
 				// ***** Authentication *****
 				.state('authenticate', {
@@ -89,12 +88,23 @@
 				})
 				
 				.state('nannies.calendar-edit-day', {
-					url : '/calendar/:day',
+					url : '/calendar/day/:day',
 					cache: false,
 					views : {
 						'nannies-calendar' : {
 							templateUrl : 'templates/calendar/calendar-edit-day.html',
 							controller : 'CalendarEditDayCtrl as editDay'
+						}
+					}
+				})
+				
+				.state('nannies.calendar-edit-restriction', {
+					url : '/calendar/restriction/:id',
+					cache: false,
+					views : {
+						'nannies-calendar' : {
+							templateUrl : 'templates/calendar/calendar-edit-restriction.html',
+							controller : 'CalendarEditRestrictionCtrl as editRestrict'
 						}
 					}
 				})

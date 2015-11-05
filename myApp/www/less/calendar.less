@@ -1,4 +1,16 @@
 /* @section Calendar */
+.calendar-edit-day,
+.calendar {
+	.button{
+		position: relative;
+		i{
+			position: absolute;
+			left: 20px;
+			top: 1px;
+		}
+	}
+}
+
 .calendar-edit-day {
 	.button.col {
 		padding: 0;
@@ -12,6 +24,9 @@
 	a.row {
 		color: @textColor;
 		text-decoration: none;
+		border-bottom: 1px solid @coldColor;
+		padding: 5px;
+		margin: 5px 0;
 		&:hover,
 		&:active,
 		&:focus,
