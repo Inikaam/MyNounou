@@ -134,6 +134,59 @@
 	
 	function CalendarEditRestrictionCtrl($state, $ionicHistory, $routeParams, $cordovaToast, $http, $ionicLoading, API_URL) {
 		var editRestrict = this;
+		var datePickerOptions = {
+				titleLabel: 'Choisir une date',  // Optional
+				todayLabel: 'Aujourd\'hui',  // Optional
+				closeLabel: 'Fermer',  // Optional
+				setLabel: 'Valider',  // Optional
+				setButtonType : 'button-assertive',  // Optional
+				todayButtonType : 'button-assertive',  // Optional
+				closeButtonType : 'button-assertive',  // Optional
+				inputDate: new Date(),  // Optional
+				mondayFirst: true,  // Optional
+				templateType: 'popup', // Optional
+				showTodayButton: 'true', // Optional
+				callback: function (val) {  // Mandatory
+					
+				},
+				dateFormat: 'dd-MM-yyyy', // Optional
+				closeOnSelect: true, // Optional
+		};
+		
+		// Variables
+		editRestrict.restrictData = {
+			dateStart: Date.now(),
+			dateEnd: Date.now(),
+			timeStart: 0,
+			timeEnd: 0
+		}
+		
+		
+		// Methods
+		editRestrict.timePickerCallback = function(){};
+		
+		
+		if($routeParams.id && $routeParams.id != 'new') {
+			
+			$ionicLoading.show({template: 'Chargement...'});
+			$http({
+				method: 'GET',
+				url: API_URL + '/api/nannies/' + sessionStorage.getItem('user_id') + '?token=' + sessionStorage.getItem('token'),
+			})
+			.success(function(res) {
+				$ionicLoading.hide();
+				if(! res.success)
+					$cordovaToast.show(res.message, 'short', 'bottom');
+				else {
+					
+				}
+			})
+			.error(function(err) {
+				$ionicLoading.hide();
+				console.error(err);
+			});
+		}
+		
 		
 		
 	}

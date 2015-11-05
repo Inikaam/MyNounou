@@ -7,7 +7,9 @@
 		</div>
 		<div class="row">
 			<div class="col">
-				Datepicker
+				<ionic-datepicker input-obj="editRestrict.datepickerObject">
+				    <button class="button button-block button-positive"> {{editRestrict.datepickerObject.inputDate | date:'dd - MMMM - yyyy'}}</button>
+				</ionic-datepicker>
 			</div>
 			<div class="col">
 				Datepicker
@@ -19,22 +21,20 @@
 		</div>
 		<div class="row">
 			<div class="col">
-				<ionic-timepicker etime="range.start" format="24" step="15" callback="editDay.timePickerCallback">
+				<ionic-timepicker etime="editRestrict.restrictData.timeStart" format="24" step="15" callback="editRestrict.timePickerCallback">
 					<label class="item item-input">
-				    	<p>{{range.start|time}}</p>
+				    	<p>{{editRestrict.restrictData.timeStart|time}}</p>
 				 	</label>
 			 	</ionic-timepicker>
 			</div>
 			<div class="col">
-				<ionic-timepicker etime="range.end" format="24" step="15" callback="editDay.timePickerCallback">
+				<ionic-timepicker etime="editRestrict.restrictData.timeEnd" format="24" step="15" callback="editRestrict.timePickerCallback">
 					<label class="item item-input">
-				    	<p>{{range.end|time}}</p>
+				    	<p>{{editRestrict.restrictData.timeEnd|time}}</p>
 				 	</label>
 			 	</ionic-timepicker>
 			</div>
 		</div>
-	
-	
 		
 	</ion-content>
 </ion-view>
