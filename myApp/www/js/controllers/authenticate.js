@@ -151,7 +151,7 @@
 					sessionStorage.setItem('user_id', res.data._id);
 					sessionStorage.setItem('token', res.token);
 					sessionStorage.setItem('user_type', 'nanny');
-					$state.go('tab.search-parents');
+					$state.go('nannies.search-parents');
 					$cordovaToast.show(res.message, 'short', 'bottom');
 				}
 				
@@ -247,8 +247,8 @@
 					sessionStorage.setItem('user_id', res.data._id);
 					sessionStorage.setItem('token', res.token);
 					sessionStorage.setItem('user_type', 'parent');
+					$state.go('parents.search-nannies');
 					$cordovaToast.show(res.message, 'short', 'bottom');
-					// TODO : rediriger vers search-nannies
 				}
 			})
 			.error(function(err) {
