@@ -40,7 +40,7 @@
 		var editDay = this;
 		
 		// Variables
-		editDay.slots = { epochTime: 12600, format: 24, step: 15 };
+		
 		
 		// Methods
 		editDay.timePickerCallback = function(){};
