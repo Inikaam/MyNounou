@@ -34,7 +34,30 @@
 			color: @textColor;
 		}
 	}
+	.restrictions {
+		&.row {
+			border-bottom: 1px solid @coldColor;
+			padding: 5px;
+			margin: 5px 0;
+		}
+		a.col {
+			color: @textColor;
+			text-decoration: none;
+			&:hover,
+			&:active,
+			&:focus,
+			&:visited {
+				color: @textColor;
+			}
+		}
+	}
 	span {
 		margin-right: 15px;
+	}
+	.button.col {
+		text-align: center;
+		i {
+			position: static;
+		}
 	}
 }

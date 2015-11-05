@@ -15,24 +15,52 @@
 		calendar.dispos = [];
 		
 		// Methods
-		$ionicLoading.show({template: 'Chargement...'});
-		$http({
-			method: 'GET',
-			url: API_URL + '/api/nannies/' + sessionStorage.getItem('user_id') + '?token=' + sessionStorage.getItem('token'),
-		})
-		.success(function(res) {
-			$ionicLoading.hide();
-			if(! res.success)
-				$cordovaToast.show(res.message, 'short', 'bottom');
-			else {
-				calendar.dispos = res.data.dispos;
-				calendar.restrictions = res.data.restrictions;
-			}
-		})
-		.error(function(err) {
-			$ionicLoading.hide();
-			console.error(err);
-		});
+		calendar.removeRestriction = removeRestriction;
+		
+		loadCalendar();
+		
+		
+		function removeRestriction(id) {
+			$ionicLoading.show({template: 'Chargement...'});
+			$http({
+				method: 'DELETE',
+				url: API_URL + '/api/nannies/' + sessionStorage.getItem('user_id') + '/restrictions/' + id + '?token=' + sessionStorage.getItem('token'),
+			})
+			.success(function(res) {
+				$ionicLoading.hide();
+				if(! res.success)
+					$cordovaToast.show(res.message, 'short', 'bottom');
+				else {
+					loadCalendar();
+					$cordovaToast.show(res.message, 'short', 'bottom');
+				}
+			})
+			.error(function(err) {
+				$ionicLoading.hide();
+				console.error(err);
+			});
+		}
+		
+		function loadCalendar() {
+			$ionicLoading.show({template: 'Chargement...'});
+			$http({
+				method: 'GET',
+				url: API_URL + '/api/nannies/' + sessionStorage.getItem('user_id') + '?token=' + sessionStorage.getItem('token'),
+			})
+			.success(function(res) {
+				$ionicLoading.hide();
+				if(! res.success)
+					$cordovaToast.show(res.message, 'short', 'bottom');
+				else {
+					calendar.dispos = res.data.dispos;
+					calendar.restrictions = res.data.restrictions;
+				}
+			})
+			.error(function(err) {
+				$ionicLoading.hide();
+				console.error(err);
+			});
+		}
 	}
 	
 	CalendarEditDayCtrl.$inject = ['$state', '$ionicHistory', '$stateParams', '$cordovaToast', '$http', '$ionicLoading', 'API_URL'];
@@ -244,8 +272,8 @@
 						if(! res.success)
 							$cordovaToast.show(res.message, 'short', 'bottom');
 						else {
-							$cordovaToast.show(res.message, 'short', 'bottom');
 							$ionicHistory.goBack();
+							$cordovaToast.show(res.message, 'short', 'bottom');
 						}
 					})
 					.error(function(err) {
