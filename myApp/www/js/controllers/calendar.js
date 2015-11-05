@@ -40,10 +40,26 @@
 		var editDay = this;
 		
 		// Variables
+		var dayNames = {
+			lun: 'lundi',
+			mar: 'mardi',
+			mer: 'mercredi',
+			jeu: 'jeudi',
+			ven: 'vendredi',
+			sam: 'samedi',
+			dim: 'dimanche'
+		}
+		editDay.day = dayNames[$routeParams.day];
 		
+		// Private vars
+		var nanny = {}
 		
 		// Methods
 		editDay.timePickerCallback = function(){};
+		editDay.addRange = addRange;
+		editDay.removeRange = removeRange;
+		editDay.validRanges = validRanges;
+		
 		
 		$ionicLoading.show({template: 'Chargement...'});
 		$http({
@@ -55,10 +71,11 @@
 			if(! res.success)
 				$cordovaToast.show(res.message, 'short', 'bottom');
 			else {
+				nanny = res.data;
 				if(res.data.dispos[$routeParams.day]) {
-					editDay.dispo = res.data.dispos[$routeParams.day];
-					if(editDay.dispo.length == 0)
-						editDay.dispo.push({start: 0, end: 0});
+					editDay.ranges = res.data.dispos[$routeParams.day];
+					if(editDay.ranges.length == 0)
+						editDay.ranges.push({start: 0, end: 0});
 				} else {
 					$state.go('nannies.calendar');
 				}
@@ -68,6 +85,45 @@
 			$ionicLoading.hide();
 			console.error(err);
 		});
+		
+		function addRange() {
+			console.info('add');
+			editDay.ranges.push({start: 0, end: 0});
+			
+		}
+		
+		function removeRange(index) {
+			editDay.ranges.splice(index, 1);
+		}
+		
+		function validRanges() {
+			var currentRange = {};
+			
+			for(var i in editDay.ranges) {
+				currentRange = editDay.ranges[i];
+				
+				if(currentRange.start >= currentRange.end) {
+					$cordovaToast.show('Les heures de début ne peuvent être supérieures aux heures de fin.', 'short', 'bottom');
+					return;
+				}
+			}
+			
+			nanny.dispos[$routeParams.day] = editDay.ranges;
+			
+			$http({
+				method: 'PUT',
+				url: API_URL + '/api/nannies/' + sessionStorage.getItem('user_id') + '?token=' + sessionStorage.getItem('token'),
+				data: {
+					dispos: nanny.dispos
+				}
+			})
+			.success(function(res) {
+				console.info(res);
+			})
+			.error(function(err) {
+				console.info(err);
+			});
+		}
 	}
 
 })();

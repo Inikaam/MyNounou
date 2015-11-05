@@ -28,7 +28,7 @@
 				$http({
 					method: 'POST',
 					url: API_URL + '/api/authenticate',
-					data: $.param(loginData)
+					data: loginData
 				})
 				.success(function(res){
 					$ionicLoading.hide();
@@ -141,7 +141,7 @@
 			$http({
 				url: API_URL + '/api/nannies',
 				method: 'POST',
-				data: $.param(nanny)
+				data: nanny
 			})
 			.success(function(res) {
 				$ionicLoading.hide();
@@ -237,7 +237,7 @@
 			$http({
 				url: API_URL + '/api/parents',
 				method: 'POST',
-				data: $.param(parent)
+				data: parent
 			})
 			.success(function(res) {
 				$ionicLoading.hide();
