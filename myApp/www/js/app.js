@@ -136,6 +136,11 @@
 	MainCtrl.$inject = ['$scope', '$state'];
 
 	function MainCtrl($scope, $state) {
+		var main = this;
+		
+		
+		main.logout = logout;
+		
 		$scope.$on('$ionicView.beforeEnter', function(event, targetView) {
 
 			// ***** Authentication restriction access *****
@@ -165,6 +170,13 @@
 			}
 
 		});
+		
+		function logout() {
+			sessionStorage.removeItem('token');
+			sessionStorage.removeItem('user_id');
+			sessionStorage.removeItem('user_type');
+			$state.go('authenticate.login');
+		}
 	}
 	
 	function timeFormat() {
