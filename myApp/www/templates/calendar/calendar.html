@@ -1,11 +1,11 @@
-<ion-view view-title="Disponibilités" class="search-parents">
+<ion-view view-title="Disponibilités" class="calendar">
 	<ion-content class="padding">
 		<h1>Vos horaires</h1>
 		<a class="row" href="#/nannies/calendar/lun">
 			<div class="col col-25"><strong>Lun</strong></div>
 			<div class="col">
 				<span ng-repeat="range in calendar.dispos.lun">
-					{{range.start}} - {{range.end}}
+					{{range.start|time}} - {{range.end|time}}
 				</span>
 			</div>
 		</a>
@@ -13,7 +13,7 @@
 			<div class="col col-25"><strong>Mar</strong></div>
 			<div class="col">
 				<span ng-repeat="range in calendar.dispos.mar">
-					{{range.start}} - {{range.end}}
+					{{range.start|time}} - {{range.end|time}}
 				</span>
 			</div>
 		</a>
@@ -21,7 +21,7 @@
 			<div class="col col-25"><strong>Mer</strong></div>
 			<div class="col">
 				<span ng-repeat="range in calendar.dispos.mer">
-					{{range.start}} - {{range.end}}
+					{{range.start|time}} - {{range.end|time}}
 				</span>
 			</div>
 		</a>
@@ -29,7 +29,7 @@
 			<div class="col col-25"><strong>Jeu</strong></div>
 			<div class="col">
 				<span ng-repeat="range in calendar.dispos.jeu">
-					{{range.start}} - {{range.end}}
+					{{range.start|time}} - {{range.end|time}}
 				</span>
 			</div>
 		</a>
@@ -37,7 +37,7 @@
 			<div class="col col-25"><strong>Ven</strong></div>
 			<div class="col">
 				<span ng-repeat="range in calendar.dispos.ven">
-					{{range.start}} - {{range.end}}
+					{{range.start|time}} - {{range.end|time}}
 				</span>
 			</div>
 		</a>
@@ -45,7 +45,7 @@
 			<div class="col col-25"><strong>Sam</strong></div>
 			<div class="col">
 				<span ng-repeat="range in calendar.dispos.sam">
-					{{range.start}} - {{range.end}}
+					{{range.start|time}} - {{range.end|time}}
 				</span>
 			</div>
 		</a>
@@ -53,7 +53,7 @@
 			<div class="col col-25"><strong>Dim</strong></div>
 			<div class="col">
 				<span ng-repeat="range in calendar.dispos.dim">
-					{{range.start}} - {{range.end}}
+					{{range.start|time}} - {{range.end|time}}
 				</span>
 			</div>
 		</a>

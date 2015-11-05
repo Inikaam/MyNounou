@@ -34,9 +34,9 @@
 		});
 	}
 	
-	CalendarEditDayCtrl.$inject = ['$state', '$stateParams', '$cordovaToast', '$http', '$ionicLoading', 'API_URL'];
+	CalendarEditDayCtrl.$inject = ['$state', '$ionicHistory', '$stateParams', '$cordovaToast', '$http', '$ionicLoading', 'API_URL'];
 	
-	function CalendarEditDayCtrl($state, $routeParams, $cordovaToast, $http, $ionicLoading, API_URL) {
+	function CalendarEditDayCtrl($state, $ionicHistory, $routeParams, $cordovaToast, $http, $ionicLoading, API_URL) {
 		var editDay = this;
 		
 		// Variables
@@ -87,7 +87,6 @@
 		});
 		
 		function addRange() {
-			console.info('add');
 			editDay.ranges.push({start: 0, end: 0});
 			
 		}
@@ -118,7 +117,11 @@
 				}
 			})
 			.success(function(res) {
-				console.info(res);
+				if(! res.success)
+					$cordovaToast.show(res.message, 'short', 'bottom');
+				else {
+					$ionicHistory.goBack();
+				}
 			})
 			.error(function(err) {
 				console.info(err);
