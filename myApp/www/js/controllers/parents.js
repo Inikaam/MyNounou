@@ -4,6 +4,7 @@
 	angular.module('myNounou')
 		.controller('NanniesSearchCtrl', NanniesSearchCtrl);
 
+
 	
 	NanniesSearchCtrl.$inject = ['$state', '$stateParams', '$cordovaToast', '$http', '$ionicLoading', 'API_URL'];
 	
@@ -11,6 +12,7 @@
 		var searchNannies = this;
 
 		searchNannies.slots = { epochTime: 12600, format: 24, step: 15 };
+		searchNannies.slots2 = { epochTime: 12600, format: 24, step: 15 };
 
 		searchNannies.timePickerCallback = function (val) {
 		  if (typeof (val) === 'undefined') {
