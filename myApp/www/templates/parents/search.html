@@ -15,13 +15,42 @@
 			</div>
 		</form>
 
-		<ionic-timepicker etime="searchNannies.slots.epochTime" format="searchNannies.slots.format" step="searchNannies.slots.step" callback="searchNannies.timePickerCallback">    
-		<button class="button button-block button-positive">Heure de début</button>
-		</ionic-timepicker>
+		<div class="row">
+  			<div class="col col-50">
+  				<ionic-timepicker etime="searchNannies.slots.epochTime" format="searchNannies.slots.format" step="searchNannies.slots.step" callback="searchNannies.timePickerCallback">    
+				<button class="button button-block button-positive">Début</button>
+				</ionic-timepicker>
+  			</div>
 
-		<ionic-timepicker etime="searchNannies.slots.epochTime" format="searchNannies.slots.format" step="searchNannies.slots.step" callback="searchNannies.timePickerCallback">    
-		<button class="button button-block button-positive">Heure de fin</button>
-		</ionic-timepicker>
+  			<div class="col col-50">
+  				<div class="start">
+  					<button class="button button-block button-stable">{{ searchNannies.slots.epochTime | millSecondsToTimeString }}</button>
+				</div>
+  			</div>
+		</div>
+		
+		<div class="row">
+  			<div class="col col-50">
+  				<ionic-timepicker etime="searchNannies.slots2.epochTime" format="searchNannies.slots2.format" step="searchNannies.slots2.step" callback="searchNannies.timePickerCallback">    
+				<button class="button button-block button-positive">Fin</button>
+				</ionic-timepicker>
+  			</div>
+
+  			<div class="col col-50">
+  				<div class="end">
+  					<button class="button button-block button-stable">{{ searchNannies.slots2.epochTime | millSecondsToTimeString }}</button>
+  				</div>
+  			</div>
+		</div>
+
+		<div class="row">
+  			<div class="col">
+  				<div class="end">
+  					<button class="button button-block button-calm">Recherche</button>
+  				</div>
+  			</div>
+		</div>
+		
 
 	</ion-content>
 </ion-view>
