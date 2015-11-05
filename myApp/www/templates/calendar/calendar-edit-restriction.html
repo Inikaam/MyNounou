@@ -1,5 +1,40 @@
 <ion-view view-title="Plages horaires" class="calendar-edit-day">
 	<ion-content class="padding">
+	
+		<div class="row">
+			<div class="col">Date de début</div>
+			<div class="col">Date de fin</div>
+		</div>
+		<div class="row">
+			<div class="col">
+				Datepicker
+			</div>
+			<div class="col">
+				Datepicker
+			</div>
+		</div>
+		<div class="row">
+			<div class="col">Heure de début</div>
+			<div class="col">Heure de fin</div>
+		</div>
+		<div class="row">
+			<div class="col">
+				<ionic-timepicker etime="range.start" format="24" step="15" callback="editDay.timePickerCallback">
+					<label class="item item-input">
+				    	<p>{{range.start|time}}</p>
+				 	</label>
+			 	</ionic-timepicker>
+			</div>
+			<div class="col">
+				<ionic-timepicker etime="range.end" format="24" step="15" callback="editDay.timePickerCallback">
+					<label class="item item-input">
+				    	<p>{{range.end|time}}</p>
+				 	</label>
+			 	</ionic-timepicker>
+			</div>
+		</div>
+	
+	
 		
 	</ion-content>
 </ion-view>
