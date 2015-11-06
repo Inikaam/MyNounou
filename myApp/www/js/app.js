@@ -68,11 +68,11 @@
 				})
 
 				.state('nannies.search-parents', {
-					url : '/search-parents',
+					url : '/nannies/search-parents',
 					views : {
 						'nannies-search-parents' : {
 							templateUrl : 'templates/nannies/search.html',
-							controller : 'SearchParentsCtrl as searchParents'
+							controller : 'NanniesSearchCtrl as searchNannies'
 						}
 					}
 				})
@@ -133,6 +133,8 @@
 					abstract : false,
 					templateUrl : 'templates/parents/profile-parents.html'
 				})
+
+
 
 			// default route
 			$urlRouterProvider.otherwise('/authenticate/login');
