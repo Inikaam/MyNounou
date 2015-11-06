@@ -2,8 +2,8 @@
 	'use strict';
 
 	angular.module('myNounou')
-		.controller('NanniesSearchCtrl', NanniesSearchCtrl);
-
+		.controller('NanniesSearchCtrl', NanniesSearchCtrl)
+		.controller('ParentsProfileCtrl', ParentsProfileCtrl);
 
 	
 	NanniesSearchCtrl.$inject = ['$state', '$stateParams', '$cordovaToast', '$http', '$ionicLoading', 'API_URL'];
@@ -22,5 +22,11 @@
 		  }
 		}
 	};
+
+	ParentsProfileCtrl.$inject = ['$state', '$stateParams', '$cordovaToast', '$http', '$ionicLoading', 'API_URL'];
+
+	function ParentsProfileCtrl($state, $routeParams, $cordovaToast, $http, $ionicLoading, API_URL) {
+		var profileParents = this;
+	}
 	
 })();

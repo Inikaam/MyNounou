@@ -1,4 +1,4 @@
-<ion-view view-title="Profile" class="profile-parents">
+<ion-view view-title="Profile" class="ParentsProfile">
 	<ion-content class="padding">
 		<form>
 			<div class="row">
@@ -79,3 +79,24 @@
 
 	</ion-content>
 </ion-view>
+
+
+<ion-tabs class="tabs-icon-top tabs-color-active-positive">
+
+  <!-- Dashboard Tab -->
+  <ion-tab title="Recherche" icon-off="ion-ios-search" icon-on="ion-ios-search-strong" href="#/tab/search-parent">
+    <ion-nav-view name="tab-dash"></ion-nav-view>
+  </ion-tab>
+
+  <!-- Chats Tab -->
+  <ion-tab title="Conversations" icon-off="ion-ios-email-outline" icon-on="ion-ios-email" href="#/tab/chats">
+    <ion-nav-view name="tab-chats"></ion-nav-view>
+  </ion-tab>
+
+  <!-- Account Tab -->
+  <ion-tab title="Compte" icon-off="ion-ios-person-outline" icon-on="ion-ios-person" href="#/tab/account">
+    <ion-nav-view name="tab-account"></ion-nav-view>
+  </ion-tab>
+
+
+</ion-tabs>

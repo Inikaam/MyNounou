@@ -110,6 +110,12 @@
 					}
 				})
 
+				.state('nannies.chat', {
+					url : '/chats',
+					abstract : false,
+					templateUrl : 'templates/nannies/tabs.html'
+				})
+
 				// ***** Parents dashboard *****
 
 				.state('parents', {
@@ -134,7 +140,15 @@
 					templateUrl : 'templates/parents/profile-parents.html'
 				})
 
-
+				// .state('parents-profile', {
+				// 	url : '/tab/account',
+				// 	views : {
+				// 		'tab-dash' : {
+				// 			templateUrl : 'templates/parents/profile-parents.html',
+				// 			controller : 'ParentsProfileCtrl as ParentsProfile'
+				// 		}
+				// 	}
+				// })
 
 			// default route
 			$urlRouterProvider.otherwise('/authenticate/login');
