@@ -114,7 +114,7 @@
 
 				.state('parents', {
 					url : '/parents',
-					abstract : true,
+					abstract : false,
 					templateUrl : 'templates/parents/tabs.html'
 				})
 
@@ -126,7 +126,13 @@
 							controller : 'NanniesSearchCtrl as searchNannies'
 						}
 					}
-				});
+				})
+
+				.state('parents-profile', {
+					url : '/tab/account',
+					abstract : false,
+					templateUrl : 'templates/parents/profile-parents.html'
+				})
 
 			// default route
 			$urlRouterProvider.otherwise('/authenticate/login');
@@ -164,13 +170,12 @@
 					sessionStorage.getItem('user_id') ||
 					sessionStorage.getItem('user_type') ||
 					sessionStorage.getItem('user_type') != 'nanny') {
-
-
 				}
 			}
 
 		});
 		
+		/* Logout */
 		function logout() {
 			sessionStorage.removeItem('token');
 			sessionStorage.removeItem('user_id');
@@ -179,6 +184,7 @@
 		}
 	}
 	
+	/* Filtre */
 	function timeFormat() {
 		return function(input) {
 			var hours = Math.floor(input / 3600);
