@@ -1,0 +1,25 @@
+<ion-view view-title="Connexion" class="authenticate">
+	<ion-content class="padding">
+		<div class="logo">
+			<img src="img/logo-typo.png">
+		</div>
+		<h1>Me connecter</h1>
+		<form name="auth.loginForm" ng-submit="auth.login()" novalidate>
+			<div class="list">
+				<label class="item item-input">
+					<input type="email" placeholder="Email" name="email" ng-model="auth.loginData.email" required>
+				</label>
+				<label class="item item-input">
+					<input type="password" placeholder="Mot de passe" ng-model="auth.loginData.password" name="password" required>
+				</label>
+				<button type="submit" class="button button-block button-positive">Connexion</button>
+			</div>
+		</form>
+		<h2>Je n'ai pas de compte ?</h2>
+		<a href="#/authenticate/create-nanny" class="button button-block button-calm">Je suis une nounou / baby-sitter</a>
+		<a href="#/authenticate/create-parent" class="button button-block button-calm">J'ai besoin d'une nounou</a>
+		<div class="icons">
+			<img src="img/icones.png">
+		</div>
+	</ion-content>
+</ion-view>

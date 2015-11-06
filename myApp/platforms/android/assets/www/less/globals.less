@@ -1,0 +1,122 @@
+/* @section Globals */
+
+/* @subsection General theming */
+
+body {
+	color: @textColor;
+	background: @bgColor;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+	color: @coldColor;
+	text-align: center;
+}
+
+h1 {
+	font-size: 2em;
+}
+
+h2 {
+	font-size: 1.5em;
+}
+
+input[type=number] {
+    -moz-appearance: textfield;
+}
+
+textarea {
+	resize: none;
+}
+
+.logo {
+	text-align: center;
+    img {
+        max-width: 120px;
+        max-height: 120px;
+    }
+}
+
+.icons {
+    img {
+        display: block;
+        width: 70%;
+        height: 70%;
+        margin: 30px auto;
+    }
+}
+
+.radio-buttons {
+	text-align: center;
+	input[type="radio"] {
+		display: none;
+	}
+	label {
+		display: inline-block;
+		border: @coldColor 1px solid;
+		color: @coldColor;
+		width: 45%;
+		padding: 10px 15px;
+		text-transform: uppercase;
+		font-weight: bold;
+		&:first-child {
+			margin-right: 2%;
+		}
+		&:last-child {
+			margin-left: 2%;
+		}
+		&.checked {
+			color: @textInverseColor;
+			background: @coldColor;
+		}
+	}
+}
+
+.align-center {
+	text-align: center;
+}
+
+/* @subsection Overrides */
+
+.button {
+	i {
+		font-size: 1.5em;
+	}
+	&.button-positive {
+		background: @hotColor;
+		border: 0 none;
+		&.activated{
+			background: darken(@hotColor, 10%);
+		}
+	}
+	&.button-stable {
+		border-color: @coldColor;
+		background: transparent;
+		color: @coldColor;
+		&.activated {
+			background: @coldColor;
+			color: @textInverseColor;
+			box-shadow: none;
+		}
+	}
+	&.button-calm {
+		border: 0 none;
+		background: @coldColor;
+		&.activated {
+			background: darken(@coldColor, 10%);
+		}
+	}
+}
+
+
+
+/* Timepicker */
+
+.popup-container .popup {
+	background-color: @hotColor;
+}
+

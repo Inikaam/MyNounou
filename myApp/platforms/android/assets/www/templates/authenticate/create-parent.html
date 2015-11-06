@@ -1,0 +1,92 @@
+<ion-view view-title="Créer un compte" class="create-account">
+	<ion-content class="padding">
+			<form name="createParent.step1Form" ng-submit="createParent.changeStep(createParent.step1Form)" class="step1" ng-show="createParent.step == 1" novalidate>
+				<p class="create-intro">Bienvenue ! Pour créer votre compte, nous avons besoin de quelques informations vous concernant !</p>
+				<h2>Votre plus beau profil</h2>
+				<div class="logo">
+					<img src="img/logo.png">
+				</div>
+				<h2>Vos nom et prénom</h2>
+				<div class="list">
+					<label class="item item-input">
+						<input type="text" placeholder="Nom" name="lastname" ng-model="createParent.accountData.lastname" required>
+					</label>
+					<label class="item item-input">
+						<input type="text" placeholder="Prénom" name="firstname" ng-model="createParent.accountData.firstname" required>
+					</label>
+					<button type="submit" class="button button-block button-calm"><i class="ion-checkmark-round"></i></button>
+				</div>
+			</form>
+			<form name="createParent.step2Form" ng-submit="createParent.changeStep(createParent.step2Form)" class="step2" ng-show="createParent.step == 2" novalidate>
+				<h2>Vous êtes :</h2>
+				<div class="radio-buttons">
+					<label ng-class="{checked: createParent.accountData.gender == 'H'}">
+						<input type="radio" value="H" ng-model="createParent.accountData.gender" />
+						Un homme
+					</label>
+					<label ng-class="{checked: createParent.accountData.gender == 'F'}">
+						<input type="radio" value="F" ng-model="createParent.accountData.gender" />
+						Une femme
+					</label>
+				</div>
+				<p class="type-description align-center" ng-bind="createParent.typeDescription[createParent.accountData.type]"></p>
+				<h2>Votre âge</h2>
+				<div class="list">
+					<label class="item item-input">
+						<input type="number" placeholder="Âge" name="age" ng-model="createParent.accountData.age" required>
+					</label>
+				</div>
+				<button type="submit" class="button button-block button-calm"><i class="ion-checkmark-round"></i></button>
+			</form>
+			<form name="createParent.step3Form" ng-submit="createParent.changeStep(createParent.step3Form)" class="step3" ng-show="createParent.step == 3" novalidate>
+				<h2>Description</h2>
+				<label class="item item-input">
+    				<textarea placeholder="Description" ng-model="createParent.accountData.description" required></textarea>
+  				</label>
+				<h2>Enregistrez une vidéo</h2>
+				<p class="align-center">
+					Présentez-vous et vos enfants pour plus de convivialité.
+				</p>
+				<button type="button" class="record-icon" ng-click="createParent.record()">
+					<i class="ion-record"></i>
+				</button>
+				<button type="submit" class="button button-block button-calm"><i class="ion-checkmark-round"></i></button>
+			</form>
+			<form name="createParent.step4Form" ng-submit="createParent.changeStep(createParent.step4Form)" class="step4" ng-show="createParent.step == 4" novalidate>
+				<h2>Vos coordonnées</h2>
+				<div class="list">
+					<label class="item item-input">
+						<input type="text" placeholder="Adresse" name="address" ng-model="createParent.accountData.address" required>
+					</label>
+					<label class="item item-input">
+						<input type="text" placeholder="Complément d'adresse" name="address2" ng-model="createParent.accountData.address2">
+					</label>
+					<label class="item item-input">
+						<input type="text" placeholder="Code postal" name="postcode" ng-model="createParent.accountData.postcode" required>
+					</label>
+					<label class="item item-input">
+						<input type="text" placeholder="Ville" name="city" ng-model="createParent.accountData.city" required>
+					</label>
+					<label class="item item-input">
+						<input type="text" placeholder="Numéro de téléphone" name="tel" ng-model="createParent.accountData.tel" required>
+					</label>
+				</div>
+				<button type="submit" class="button button-block button-calm"><i class="ion-checkmark-round"></i></button>
+			</form>
+			<form name="createParent.step5Form" ng-submit="createParent.changeStep(createParent.step5Form)" class="step5" ng-show="createParent.step == 5" novalidate>
+				<p class="create-intro">Dernières formalités !<br />Pour pouvoir vous reconnecter.</p>
+				<div class="list">
+					<label class="item item-input">
+						<input type="email" placeholder="Email" name="email" ng-model="createParent.accountData.email" required>
+					</label>
+					<label class="item item-input">
+						<input type="password" placeholder="Mot de passe" ng-model="createParent.accountData.password" name="password" required>
+					</label>
+					<label class="item item-input">
+						<input type="password" placeholder="Répéter le mot de passe" ng-model="createParent.accountData.confirmPassword" name="confirmPassword" required>
+					</label>
+				</div>
+				<button type="submit" class="button button-block button-calm">C'est parti</button>
+			</form>
+	</ion-content>
+</ion-view>

@@ -1,0 +1,110 @@
+<ion-view view-title="Créer un compte" class="create-account">
+	<ion-content class="padding">
+			<form name="createNanny.step1Form" ng-submit="createNanny.changeStep(createNanny.step1Form)" class="step1" ng-show="createNanny.step == 1" novalidate>
+				<p class="create-intro">Bienvenue ! Pour créer votre compte, nous avons besoin de quelques informations vous concernant !</p>
+				<h2>Votre plus beau profil</h2>
+				<div class="logo">
+					<img src="img/logo.png">
+				</div>
+				<h2>Vos nom et prénom</h2>
+				<div class="list">
+					<label class="item item-input">
+						<input type="text" placeholder="Nom" name="lastname" ng-model="createNanny.accountData.lastname" required>
+					</label>
+					<label class="item item-input">
+						<input type="text" placeholder="Prénom" name="firstname" ng-model="createNanny.accountData.firstname" required>
+					</label>
+					<button type="submit" class="button button-block button-calm"><i class="ion-checkmark-round"></i></button>
+				</div>
+			</form>
+			<form name="createNanny.step2Form" ng-submit="createNanny.changeStep(createNanny.step2Form)" class="step2" ng-show="createNanny.step == 2" novalidate>
+				<h2>Vous êtes :</h2>
+				<div class="radio-buttons">
+					<label ng-class="{checked: createNanny.accountData.gender == 'H'}">
+						<input type="radio" value="H" ng-model="createNanny.accountData.gender" />
+						Un homme
+					</label>
+					<label ng-class="{checked: createNanny.accountData.gender == 'F'}">
+						<input type="radio" value="F" ng-model="createNanny.accountData.gender" />
+						Une femme
+					</label>
+				</div>
+				<h2>Vous êtes :</h2>
+				<div class="radio-buttons">
+					<label ng-class="{checked: createNanny.accountData.type == 'nanny'}">
+						<input type="radio" value="nanny" ng-model="createNanny.accountData.type" />
+						Nounou
+					</label>
+					<label ng-class="{checked: createNanny.accountData.type == 'babysitter'}">
+						<input type="radio" value="babysitter" ng-model="createNanny.accountData.type" />
+						Baby-sitter
+					</label>
+				</div>
+				<p class="type-description align-center" ng-bind="createNanny.typeDescription[createNanny.accountData.type]"></p>
+				<h2>Votre âge</h2>
+				<div class="list">
+					<label class="item item-input">
+						<input type="number" placeholder="Âge" name="age" ng-model="createNanny.accountData.age" required>
+					</label>
+				</div>
+				<button type="submit" class="button button-block button-calm"><i class="ion-checkmark-round"></i></button>
+			</form>
+			<form name="createNanny.step3Form" ng-submit="createNanny.changeStep(createNanny.step3Form)" class="step3" ng-show="createNanny.step == 3" novalidate>
+				<h2>Description</h2>
+				<label class="item item-input">
+    				<textarea placeholder="Description" ng-model="createNanny.accountData.description" required></textarea>
+  				</label>
+				<h2>Enregistrez une vidéo</h2>
+				<p class="align-center">
+					Présentez-vous en une minute et augmentez vos chances !
+				</p>
+				<button type="button" class="record-icon" ng-click="createNanny.record()">
+					<i class="ion-record"></i>
+				</button>
+				<button type="submit" class="button button-block button-calm"><i class="ion-checkmark-round"></i></button>
+			</form>
+			<form name="createNanny.step4Form" ng-submit="createNanny.changeStep(createNanny.step4Form)" class="step4" ng-show="createNanny.step == 4" novalidate>
+				<h2>Vos honoraires</h2>
+				<div class="list">
+					<label class="item item-input item-stacked-label">
+						<span class="input-label">Tarif à l'heure en &euro; (euros)</span>
+						<input type="number" placeholder="Tarif" name="price" ng-model="createNanny.accountData.price" required>
+					</label>
+				</div>
+				<h2>Vos coordonnées</h2>
+				<div class="list">
+					<label class="item item-input">
+						<input type="text" placeholder="Adresse" name="address" ng-model="createNanny.accountData.address" required>
+					</label>
+					<label class="item item-input">
+						<input type="text" placeholder="Complément d'adresse" name="address2" ng-model="createNanny.accountData.address2">
+					</label>
+					<label class="item item-input">
+						<input type="text" placeholder="Code postal" name="postcode" ng-model="createNanny.accountData.postcode" required>
+					</label>
+					<label class="item item-input">
+						<input type="text" placeholder="Ville" name="city" ng-model="createNanny.accountData.city" required>
+					</label>
+					<label class="item item-input">
+						<input type="text" placeholder="Numéro de téléphone" name="tel" ng-model="createNanny.accountData.tel" required>
+					</label>
+				</div>
+				<button type="submit" class="button button-block button-calm"><i class="ion-checkmark-round"></i></button>
+			</form>
+			<form name="createNanny.step5Form" ng-submit="createNanny.changeStep(createNanny.step5Form)" class="step5" ng-show="createNanny.step == 5" novalidate>
+				<p class="create-intro">Dernières formalités !<br />Pour pouvoir vous reconnecter.</p>
+				<div class="list">
+					<label class="item item-input">
+						<input type="email" placeholder="Email" name="email" ng-model="createNanny.accountData.email" required>
+					</label>
+					<label class="item item-input">
+						<input type="password" placeholder="Mot de passe" ng-model="createNanny.accountData.password" name="password" required>
+					</label>
+					<label class="item item-input">
+						<input type="password" placeholder="Répéter le mot de passe" ng-model="createNanny.accountData.confirmPassword" name="confirmPassword" required>
+					</label>
+				</div>
+				<button type="submit" class="button button-block button-calm">C'est parti</button>
+			</form>
+	</ion-content>
+</ion-view>

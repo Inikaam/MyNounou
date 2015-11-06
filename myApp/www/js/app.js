@@ -71,7 +71,7 @@
 					url : '/nannies/search-parents',
 					views : {
 						'nannies-search-parents' : {
-							templateUrl : 'templates/nannies/search.html',
+							templateUrl : 'templates/nannies/search-nannies.html',
 							controller : 'NanniesSearchCtrl as searchNannies'
 						}
 					}
@@ -110,10 +110,22 @@
 					}
 				})
 
-				.state('nannies.chat', {
+				// .state('nannies.chat', {
+				// 	url : '/chats',
+				// 	abstract : false,
+				// 	templateUrl : 'templates/nannies/tabs.html'
+				// })
+
+				.state('nannies-chats', {
 					url : '/chats',
 					abstract : false,
-					templateUrl : 'templates/nannies/tabs.html'
+					templateUrl : 'templates/nannies/chats-nannies.html'
+				})
+
+				.state('nannies-profile', {
+					url : '/nannies/account',
+					abstract : false,
+					templateUrl : 'templates/nannies/profile-nannies.html'
 				})
 
 				// ***** Parents dashboard *****
@@ -128,7 +140,7 @@
 					url : '/search-nannies',
 					views : {
 						'tab-dash' : {
-							templateUrl : 'templates/parents/search.html',
+							templateUrl : 'templates/parents/search-parents.html',
 							controller : 'NanniesSearchCtrl as searchNannies'
 						}
 					}
@@ -140,15 +152,12 @@
 					templateUrl : 'templates/parents/profile-parents.html'
 				})
 
-				// .state('parents-profile', {
-				// 	url : '/tab/account',
-				// 	views : {
-				// 		'tab-dash' : {
-				// 			templateUrl : 'templates/parents/profile-parents.html',
-				// 			controller : 'ParentsProfileCtrl as ParentsProfile'
-				// 		}
-				// 	}
-				// })
+				.state('parents-chats', {
+					url : '/tab/chats',
+					abstract : false,
+					templateUrl : 'templates/parents/chats-parents.html'
+				})
+
 
 			// default route
 			$urlRouterProvider.otherwise('/authenticate/login');
