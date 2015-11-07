@@ -1,25 +1,33 @@
-<ion-view view-title="Chats" class="chats">
-	<ion-content class="padding">
-	
-		<form>
-			<div class="row">
-				<input type=""/>
-			</div>
-		</form>
+<body ng-app="starter" ng-controller="chatController">
+    <ion-header-bar class="bar-stable">
+    </ion-header-bar>
+    <ion-content>
 
-		
-
-		<div class="row">
-  			<div class="col">
-  				<div class="end">
-  					<button class="button button-block button-calm">Envoyer</button>
-  				</div>
-  			</div>
-		</div>
-		
-
-	</ion-content>
-</ion-view>
+      <h1 class="title">My Chat</h1>
+        <div class="row row-bottom">
+            <div class="col">
+                <div class="chatbox-container">
+                    <ul class="chatbox">
+                        <!-- We output the messages -->
+                        <li ng-repeat="msg in messages">{{msg.content}}</li>
+                    </ul>
+                </div>
+                <form name="myform" ng-submit="addMessage(message.theMessage)">
+                    <label class="item item-input message-input">
+                        <!-- the input text field is bound to message.theMessage -->
+                        <input type="text" ng-model="message.theMessage" placeholder="Type your message..."
+                        />
+                    </label>
+                    <button class="button button-block button-positive" action="submit">
+                        Envoyer
+                    </button>
+                </form>
+            </div>
+        </div>
+    </ion-content>
+</body>
+ 
+</html>
 
 <ion-tabs class="tabs-icon-top tabs-color-active-positive">
 

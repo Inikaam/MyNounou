@@ -2,7 +2,7 @@
 	'use strict';
 
 	angular.module('myNounou')
-		.controller('SearchParentsCtrl', SearchParentsCtrl);
+		.controller('SearchParentsCtrl', SearchParentsCtrl)
 
 	SearchParentsCtrl.$inject = ['$state', '$stateParams', '$cordovaToast', '$http', '$ionicLoading', 'API_URL'];
 
@@ -11,3 +11,4 @@
 	}
 
 })();
+
