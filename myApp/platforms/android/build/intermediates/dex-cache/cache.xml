@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<items version="2" >
+
+    <item
+        jar="/Users/slim/Development/ionic-proget/MyNounou/myApp/platforms/android/build/intermediates/exploded-aar/android/CordovaLib/unspecified/debug/classes.jar"
+        jumboMode="false"
+        revision="22.0.1"
+        sha1="e6e5cc29fc16fd976062b2863887aed31229e96c">
+        <dex dex="/Users/slim/Development/ionic-proget/MyNounou/myApp/platforms/android/build/intermediates/pre-dexed/debug/classes-f0b2e7c236238b8141a383abc2d5afbb6446e22d.jar" />
+    </item>
+
+</items>

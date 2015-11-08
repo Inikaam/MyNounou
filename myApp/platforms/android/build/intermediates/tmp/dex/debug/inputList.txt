@@ -1,0 +1,2 @@
+/Users/slim/Development/ionic-proget/MyNounou/myApp/platforms/android/build/intermediates/classes/debug
+/Users/slim/Development/ionic-proget/MyNounou/myApp/platforms/android/build/intermediates/pre-dexed/debug/classes-f0b2e7c236238b8141a383abc2d5afbb6446e22d.jar

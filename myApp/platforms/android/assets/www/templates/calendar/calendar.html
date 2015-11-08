@@ -1,0 +1,74 @@
+<ion-view view-title="Disponibilités" class="calendar">
+	<ion-content class="padding">
+		<h1>Vos horaires</h1>
+		<a class="row" href="#/nannies/calendar/day/lun">
+			<div class="col col-25"><strong>Lun</strong></div>
+			<div class="col">
+				<span ng-repeat="range in calendar.dispos.lun | orderBy:'start'">
+					{{range.start|time}} - {{range.end|time}}
+				</span>
+			</div>
+		</a>
+		<a class="row" href="#/nannies/calendar/day/mar">
+			<div class="col col-25"><strong>Mar</strong></div>
+			<div class="col">
+				<span ng-repeat="range in calendar.dispos.mar | orderBy:'start'">
+					{{range.start|time}} - {{range.end|time}}
+				</span>
+			</div>
+		</a>
+		<a class="row" href="#/nannies/calendar/day/mer">
+			<div class="col col-25"><strong>Mer</strong></div>
+			<div class="col">
+				<span ng-repeat="range in calendar.dispos.mer | orderBy:'start'">
+					{{range.start|time}} - {{range.end|time}}
+				</span>
+			</div>
+		</a>
+		<a class="row" href="#/nannies/calendar/day/jeu">
+			<div class="col col-25"><strong>Jeu</strong></div>
+			<div class="col">
+				<span ng-repeat="range in calendar.dispos.jeu | orderBy:'start'">
+					{{range.start|time}} - {{range.end|time}}
+				</span>
+			</div>
+		</a>
+		<a class="row" href="#/nannies/calendar/day/ven">
+			<div class="col col-25"><strong>Ven</strong></div>
+			<div class="col">
+				<span ng-repeat="range in calendar.dispos.ven | orderBy:'start'">
+					{{range.start|time}} - {{range.end|time}}
+				</span>
+			</div>
+		</a>
+		<a class="row" href="#/nannies/calendar/day/sam">
+			<div class="col col-25"><strong>Sam</strong></div>
+			<div class="col">
+				<span ng-repeat="range in calendar.dispos.sam | orderBy:'start'">
+					{{range.start|time}} - {{range.end|time}}
+				</span>
+			</div>
+		</a>
+		<a class="row" href="#/nannies/calendar/day/dim">
+			<div class="col col-25"><strong>Dim</strong></div>
+			<div class="col">
+				<span ng-repeat="range in calendar.dispos.dim | orderBy:'start'">
+					{{range.start|time}} - {{range.end|time}}
+				</span>
+			</div>
+		</a>
+		<h1 class="warm">Prochains rendez-vous</h1>
+		<a href="#/nannies/calendar/restriction/new" class="button button-positive button-block"><i class="ion-plus-round"></i> Ajouter un rendez-vous</a>
+		<div ng-repeat="restriction in calendar.restrictions | orderBy:'start'">
+			<div class="row">
+				<div class="col">
+					Du {{restriction.start|date : 'dd/MM/yyyy'}} au {{restriction.end|date : 'dd/MM/yyyy'}}
+				</div>
+				<div class="col">
+					De {{restriction.start|date: 'hh:mm'}} à {{restriction.end|date: 'hh:mm'}}
+				</div>
+			</div>
+			<p>{{restriction.reason}}</p>
+		</div>
+	</ion-content>
+</ion-view>

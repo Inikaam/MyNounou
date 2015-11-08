@@ -68,11 +68,11 @@
 				})
 
 				.state('nannies.search-parents', {
-					url : '/search-parents',
+					url : '/nannies/search-parents',
 					views : {
 						'nannies-search-parents' : {
-							templateUrl : 'templates/nannies/search.html',
-							controller : 'SearchParentsCtrl as searchParents'
+							templateUrl : 'templates/nannies/search-nannies.html',
+							controller : 'NanniesSearchCtrl as searchNannies'
 						}
 					}
 				})
@@ -110,11 +110,29 @@
 					}
 				})
 
+				// .state('nannies.chat', {
+				// 	url : '/chats',
+				// 	abstract : false,
+				// 	templateUrl : 'templates/nannies/tabs.html'
+				// })
+
+				.state('nannies-chats', {
+					url : '/chats',
+					abstract : false,
+					templateUrl : 'templates/nannies/chats-nannies.html'
+				})
+
+				.state('nannies-profile', {
+					url : '/nannies/account',
+					abstract : false,
+					templateUrl : 'templates/nannies/profile-nannies.html'
+				})
+
 				// ***** Parents dashboard *****
 
 				.state('parents', {
 					url : '/parents',
-					abstract : true,
+					abstract : false,
 					templateUrl : 'templates/parents/tabs.html'
 				})
 
@@ -122,11 +140,24 @@
 					url : '/search-nannies',
 					views : {
 						'tab-dash' : {
-							templateUrl : 'templates/parents/search.html',
+							templateUrl : 'templates/parents/search-parents.html',
 							controller : 'NanniesSearchCtrl as searchNannies'
 						}
 					}
-				});
+				})
+
+				.state('parents-profile', {
+					url : '/tab/account',
+					abstract : false,
+					templateUrl : 'templates/parents/profile-parents.html'
+				})
+
+				.state('parents-chats', {
+					url : '/tab/chats',
+					abstract : false,
+					templateUrl : 'templates/parents/chats-parents.html'
+				})
+
 
 			// default route
 			$urlRouterProvider.otherwise('/authenticate/login');
@@ -164,13 +195,12 @@
 					sessionStorage.getItem('user_id') ||
 					sessionStorage.getItem('user_type') ||
 					sessionStorage.getItem('user_type') != 'nanny') {
-
-
 				}
 			}
 
 		});
 		
+		/* Logout */
 		function logout() {
 			sessionStorage.removeItem('token');
 			sessionStorage.removeItem('user_id');
@@ -179,6 +209,7 @@
 		}
 	}
 	
+	/* Filtre */
 	function timeFormat() {
 		return function(input) {
 			var hours = Math.floor(input / 3600);
@@ -187,7 +218,7 @@
 				hours = '0' + hours;
 			if(min < 10)
 				min = '0' + min;
-			return hours + ':' + min;
+			return hours + ' : ' + min;
 		}
 	}
 })();

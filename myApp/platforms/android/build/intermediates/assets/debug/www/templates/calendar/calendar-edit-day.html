@@ -1,0 +1,30 @@
+<ion-view view-title="Plages horaires" class="calendar-edit-day">
+	<ion-content class="padding">
+		<h1>Plages horaires<br />du {{editDay.day}}</h1>
+		
+		<div class="row">
+			<div class="col col-40">Heure de début</div>
+			<div class="col col-40">Heure de fin</div>
+			<div class="col"></div>
+		</div>
+		<div class="row" ng-repeat="range in editDay.ranges">
+			<div class="col col-40">
+				<ionic-timepicker etime="range.start" format="24" step="15" callback="editDay.timePickerCallback">
+					<label class="item item-input">
+				    	<p>{{range.start|time}}</p>
+				 	</label>
+			 	</ionic-timepicker>
+			</div>
+			<div class="col col-40">
+				<ionic-timepicker etime="range.end" format="24" step="15" callback="editDay.timePickerCallback">
+					<label class="item item-input">
+				    	<p>{{range.end|time}}</p>
+				 	</label>
+			 	</ionic-timepicker>
+			</div>
+			<button class="col button button-stable button-small" ng-click="editDay.removeRange($index)"><i class="ion-close-round"></i></button>
+		</div>
+		<button class="button button-block button-calm" ng-click="editDay.addRange()"><i class="ion-plus-round"></i> Ajouter une tranche</button>
+		<button class="button button-block button-positive" ng-click="editDay.validRanges()"><i class="ion-checkmark-round"></i> Valider les tranches</button>
+	</ion-content>
+</ion-view>
