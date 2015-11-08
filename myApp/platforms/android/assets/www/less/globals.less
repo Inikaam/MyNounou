@@ -80,6 +80,35 @@ textarea {
 	text-align: center;
 }
 
+.col-40 {
+	-webkit-box-flex: 0;
+	-webkit-flex: 0 0 40%;
+	-moz-box-flex: 0;
+	-moz-flex: 0 0 40%;
+	-ms-flex: 0 0 40%;
+	flex: 0 0 40%;
+	max-width: 40%;
+}
+
+.warm {
+	color: @hotColor;
+}
+
+.logout {
+	position: absolute;
+	right: 0;
+	top: 0;
+	z-index: 50;
+	border: none;
+	background: none;
+	line-height: 42px;
+	min-height: 42px;
+}
+
+.hide {
+	display: none !important;
+}
+
 /* @subsection Overrides */
 
 .button {
@@ -111,12 +140,3 @@ textarea {
 		}
 	}
 }
-
-
-
-/* Timepicker */
-
-.popup-container .popup {
-	background-color: @hotColor;
-}
-

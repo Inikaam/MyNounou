@@ -57,18 +57,19 @@
 				</span>
 			</div>
 		</a>
-		<h1 class="warm">Prochains rendez-vous</h1>
-		<a href="#/nannies/calendar/restriction/new" class="button button-positive button-block"><i class="ion-plus-round"></i> Ajouter un rendez-vous</a>
-		<div ng-repeat="restriction in calendar.restrictions | orderBy:'start'">
-			<div class="row">
-				<div class="col">
-					Du {{restriction.start|date : 'dd/MM/yyyy'}} au {{restriction.end|date : 'dd/MM/yyyy'}}
-				</div>
-				<div class="col">
-					De {{restriction.start|date: 'hh:mm'}} à {{restriction.end|date: 'hh:mm'}}
-				</div>
-			</div>
-			<p>{{restriction.reason}}</p>
+		<h1>Prochains rendez-vous</h1>
+		<a href="#/nannies/calendar/restriction/new" class="button button-calm button-block"><i class="ion-plus-round"></i> Ajouter un rendez-vous</a>
+		<div class="row restrictions" ng-repeat="restriction in calendar.restrictions | orderBy:'start'">
+			<a class="col"  ng-href="#/nannies/calendar/restriction/{{restriction._id}}">
+				<p>
+					Du {{restriction.start|date : 'dd/MM/yyyy'}} à {{restriction.start|date: 'HH:mm'}}
+				</p>
+				<p>
+					au {{restriction.end|date : 'dd/MM/yyyy'}} à {{restriction.end|date: 'HH:mm'}}
+				</p>
+				<p>Pour : {{restriction.reason}}</p>
+			</a>
+			<button class="col col-25 button button-positive button-small" ng-click="calendar.removeRestriction(restriction._id)"><i class="ion-close-round"></i></button>
 		</div>
 	</ion-content>
 </ion-view>

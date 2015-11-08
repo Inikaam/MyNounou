@@ -7,10 +7,18 @@
 		</div>
 		<div class="row">
 			<div class="col">
-				Datepicker
+				<ionic-datepicker input-obj="editRestrict.startDatePicker">
+				    <label class="item item-input">
+				    	<p>{{editRestrict.startDatePicker.inputDate|date: 'dd/MM/yyyy'}}</p>
+				 	</label>
+				</ionic-datepicker>
 			</div>
 			<div class="col">
-				Datepicker
+				<ionic-datepicker input-obj="editRestrict.endDatePicker">
+				    <label class="item item-input">
+				    	<p>{{editRestrict.endDatePicker.inputDate|date: 'dd/MM/yyyy'}}</p>
+				 	</label>
+				</ionic-datepicker>
 			</div>
 		</div>
 		<div class="row">
@@ -19,22 +27,26 @@
 		</div>
 		<div class="row">
 			<div class="col">
-				<ionic-timepicker etime="range.start" format="24" step="15" callback="editDay.timePickerCallback">
+				<ionic-timepicker etime="editRestrict.restrictData.timeStart" format="24" step="15" callback="editRestrict.timePickerCallback">
 					<label class="item item-input">
-				    	<p>{{range.start|time}}</p>
+				    	<p>{{editRestrict.restrictData.timeStart|time}}</p>
 				 	</label>
 			 	</ionic-timepicker>
 			</div>
 			<div class="col">
-				<ionic-timepicker etime="range.end" format="24" step="15" callback="editDay.timePickerCallback">
+				<ionic-timepicker etime="editRestrict.restrictData.timeEnd" format="24" step="15" callback="editRestrict.timePickerCallback">
 					<label class="item item-input">
-				    	<p>{{range.end|time}}</p>
+				    	<p>{{editRestrict.restrictData.timeEnd|time}}</p>
 				 	</label>
 			 	</ionic-timepicker>
 			</div>
 		</div>
-	
-	
+		<div class="list">
+			<label class="item item-input">
+				<input type="text" placeholder="Raison de l'indisponibilité" name="reason" ng-model="editRestrict.restrictData.reason">
+			</label>
+		</div>
+		<button class="button button-block button-positive" ng-click="editRestrict.saveRestrict()">Valider</button>
 		
 	</ion-content>
 </ion-view>
